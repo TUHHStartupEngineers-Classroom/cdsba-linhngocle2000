@@ -67,14 +67,14 @@
     "href": "content/01_journal/01_probability.html",
     "title": "Probability Theory",
     "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh.\nThis is a .qmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "\\(P(T \\cap S) = 0.3 \\cdot 0.2 = 0.06\\)\n\\(P(T \\cap \\bar{S}) = 0.7 \\cdot 0.6 = 0.42\\)\n\\(P(\\bar{T} \\cap S) = 0.3 \\cdot 0.8 = 0.24\\)\n\\(P(\\bar{T} \\cap \\bar{S}) = 0.7 \\cdot 0.4 = 0.28\\)\n\\(P(T \\cap S) + P(T \\cap \\bar{S}) + P(\\bar{T} \\cap S) + P(\\bar{T} \\cap \\bar{S}) = 0.06 + 0.42 + 0.24 + 0.28 = 1\\)"
   },
   {
     "objectID": "content/01_journal/01_probability.html#header-2",
     "href": "content/01_journal/01_probability.html#header-2",
     "title": "Probability Theory",
-    "section": "\n2.1 Header 2",
-    "text": "2.1 Header 2\nHeader 3\nHeader 4\nHeader 5\nHeader 6"
+    "section": "2.1 Header 2",
+    "text": "2.1 Header 2\n\nHeader 3\n\nHeader 4\n\nHeader 5\n\nHeader 6"
   },
   {
     "objectID": "content/01_journal/03_regression.html",
@@ -89,5 +89,26 @@
     "title": "Regression Discontinuity",
     "section": "",
     "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
+  },
+  {
+    "objectID": "content/01_journal/01_probability.html#assignment-i",
+    "href": "content/01_journal/01_probability.html#assignment-i",
+    "title": "Probability Theory",
+    "section": "",
+    "text": "\\(P(T \\cap S) = 0.3 \\cdot 0.2 = 0.06\\)\n\\(P(T \\cap \\bar{S}) = 0.7 \\cdot 0.6 = 0.42\\)\n\\(P(\\bar{T} \\cap S) = 0.3 \\cdot 0.8 = 0.24\\)\n\\(P(\\bar{T} \\cap \\bar{S}) = 0.7 \\cdot 0.4 = 0.28\\)\n\\(P(T \\cap S) + P(T \\cap \\bar{S}) + P(\\bar{T} \\cap S) + P(\\bar{T} \\cap \\bar{S}) = 0.06 + 0.42 + 0.24 + 0.28 = 1\\)"
+  },
+  {
+    "objectID": "content/01_journal/01_probability.html#assignment-ii",
+    "href": "content/01_journal/01_probability.html#assignment-ii",
+    "title": "Probability Theory",
+    "section": "2.1 Assignment II",
+    "text": "2.1 Assignment II\n\nThe percentage of customers using all three devices is \\(0.5\\%\\).\nThe percentage of customers using at least two devices is \\(19.9\\%\\).\nThe percentage of customers using only one device is \\(80.1\\%\\)."
+  },
+  {
+    "objectID": "content/01_journal/01_probability.html#assignment-iii",
+    "href": "content/01_journal/01_probability.html#assignment-iii",
+    "title": "Probability Theory",
+    "section": "3.1 Assignment III",
+    "text": "3.1 Assignment III\n\n\\(P(\\bar{A}|B) = \\frac{0.01*(1-0.04)}{0.97*0.04+0.01*(1-0.04)} = 0.198\\)\n\\(P(A|B) = \\frac{0.97*0.04}{0.97*0.04+0.01*(1-0.04)} = 0.802\\)"
   }
 ]
