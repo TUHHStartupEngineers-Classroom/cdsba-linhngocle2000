@@ -8,7 +8,7 @@
 
 <meta name="author" content="Linh Ngoc Le">
 
-<title>MyLabJournal - Statistical Concepts</title>
+<title>MyLabJournal - Probability Theory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,6 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,8 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -191,7 +192,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#assignments" id="toc-assignments" class="nav-link active" data-scroll-target="#assignments"><span class="header-section-number">1</span> Assignments</a></li>
+  <li><a href="#text-formatting" id="toc-text-formatting" class="nav-link active" data-scroll-target="#text-formatting"><span class="header-section-number">1</span> Text Formatting</a></li>
+  <li><a href="#headings" id="toc-headings" class="nav-link" data-scroll-target="#headings"><span class="header-section-number">2</span> Headings</a>
+  <ul class="collapse">
+  <li><a href="#header-2" id="toc-header-2" class="nav-link" data-scroll-target="#header-2"><span class="header-section-number">2.1</span> Header 2</a></li>
+  </ul></li>
+  <li><a href="#links-images" id="toc-links-images" class="nav-link" data-scroll-target="#links-images"><span class="header-section-number">3</span> Links &amp; Images</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">4</span> Lists</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">5</span> Tables</a></li>
+  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code"><span class="header-section-number">6</span> Source Code</a></li>
   </ul>
 </nav>
     </div>
@@ -200,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Statistical Concepts</h1>
+<h1 class="title">Probability Theory</h1>
 </div>
 
 
@@ -221,77 +230,168 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="assignments" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Assignments</h1>
-<ol type="1">
-<li>Expected value, variance, standard deviation:
-<ol type="1">
-<li>Expected value of
-<ol type="i">
-<li>age: <span class="math inline">\(E[age] = 33.471\)</span></li>
-<li>income: <span class="math inline">\(E[income] = 3510.731\)</span></li>
-</ol></li>
-<li>Variance of
-<ol type="i">
-<li>age: <span class="math inline">\(Var[age] = 340.6078\)</span></li>
-<li>income: <span class="math inline">\(Var[income] = 8625646\)</span></li>
-</ol></li>
-<li>Standard deviation of
-<ol type="i">
-<li>age: <span class="math inline">\(\sigma = 18.45556\)</span></li>
-<li>income: <span class="math inline">\(\sigma = 2936.945\)</span></li>
-</ol></li>
-</ol></li>
-</ol>
-<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-1_50eb1455920911b8b64765e49b965d21">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Functions used in R for the computation</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>random_vars <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"files/random_vars.rds"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Expected value of "age"</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>E_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"age"</span>]))</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Expected value of "income"</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>E_income <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"income"</span>]))</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Variance of "age"</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>Var_age <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars[<span class="st">"age"</span>])</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Variance of "income"</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>Var_income <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars[<span class="st">"income"</span>])</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Standard deviation of "age"</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>Stdev_age <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"age"</span>]))</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Standard deviation of "income"</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>Stdev_income <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"income"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<ol start="2" type="1">
-<li><p>Comparing standard deviations between age and income may not provide meaningful insights. The two variables are different types of data, thus they have different ranges. Age has a range from 0 to 99, but income has a range from 0 to 10485. Furthermore, both variables have different measure units. Age is measured in years and income is measured in a type of currency. This makes their standard deviations also to have different unit, thus they are not comparable to each other.</p></li>
-<li><p>Covariance, correlation:</p>
-<ol type="1">
-<li>Covariance: <span class="math inline">\(Cov(age,income) = 29700.15\)</span></li>
-<li>Correlation: <span class="math inline">\(Corr(age,income) = 0.5479432\)</span></li>
-</ol></li>
-</ol>
-<p>Both the covariance and correlation indicate a positive linear relationship between age and income. In other words, on average, when age increases, income increases proportionally.</p>
-<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-2_c823659b57e4b05b9e2385f7973defc3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Functions used in R for the computation</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># Covariance</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>Covariance <span class="ot">&lt;-</span> <span class="fu">cov</span>(random_vars[<span class="st">"age"</span>], random_vars[<span class="st">"income"</span>])</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Correlation</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>Correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(random_vars[<span class="st">"age"</span>], random_vars[<span class="st">"income"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<ol start="4" type="1">
-<li><p>Correlation is easier to interpret than covariance. Since correlation is a standardized measure ranges from -1 to 1, one can find out the strength of the relationship between two variables in addition to its direction. The closer the absolute value of correlation is to 1, the stronger the relationship. In contrast, covariance is not a standardized measure, since its values don’t have a specific range. Covariance only provides information to the direction of the relationship.</p></li>
-<li><p>Conditional expected value</p>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can delete everything in here and start fresh.</p>
+</div>
+</div>
+<p>This is a <code>.qmd</code> file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.</p>
+<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="text-formatting" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Text Formatting</h1>
+<p><em>italics</em> and <strong>bold</strong></p>
+<p>superscript<sup>2</sup> / subscript<sub>2</sub></p>
+<p><del>strikethrough</del></p>
+<p><code>verbatim code</code></p>
+<blockquote class="blockquote">
+<p>Blockquote</p>
+</blockquote>
+</section>
+<section id="headings" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Headings</h1>
+<section id="header-2" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="header-2"><span class="header-section-number">2.1</span> Header 2</h2>
+<section id="header-3" class="level3">
+<h3 class="anchored" data-anchor-id="header-3">Header 3</h3>
+<section id="header-4" class="level4">
+<h4 class="anchored" data-anchor-id="header-4">Header 4</h4>
+<section id="header-5" class="level5">
+<h5 class="anchored" data-anchor-id="header-5">Header 5</h5>
+<section id="header-6" class="level6">
+<h6 class="anchored" data-anchor-id="header-6">Header 6</h6>
+</section>
+</section>
+</section>
+</section>
+</section>
+</section>
+<section id="links-images" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Links &amp; Images</h1>
+<p><a href="https://quarto.org" class="uri">https://quarto.org</a></p>
+<p><a href="https://quarto.org">Quarto</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/img/elephant.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Caption</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://quarto.org"><img src="../../assets/img/elephant.png" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Caption</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://quarto.org" title="An elephant"><img src="../../assets/img/elephant.png" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Caption</figcaption>
+</figure>
+</div>
+</section>
+<section id="lists" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Lists</h1>
+<ul>
+<li><p>unordered list</p>
+<ul>
+<li>sub-item 1</li>
+<li>sub-item 2
+<ul>
+<li>sub-sub-item 1</li>
+</ul></li>
+</ul></li>
+<li><p>item 2</p>
+<p>Continued (indent 4 spaces)</p></li>
+</ul>
 <ol type="1">
-<li><span class="math inline">\(E[income|age&lt;=18] = 389.6074\)</span></li>
-<li><span class="math inline">\(E[income|age \in [18,65)] = 4685.734\)</span></li>
-<li><span class="math inline">\(E[income|age&gt;=65] = 1777.237\)</span></li>
+<li>ordered list</li>
+<li>item 2
+<ol type="i">
+<li>sub-item 1
+<ol type="A">
+<li>sub-sub-item 1</li>
+</ol></li>
 </ol></li>
 </ol>
-<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-3_955c0df309d66a70f6b31bfbc2129403">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Functions used in R for the computation</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Expected value of income with age under or equal 18</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>E_1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">18</span>,<span class="st">"income"</span>]))</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Expected value of income with age above or equal 18 AND under 65</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>E_2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> random_vars<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">65</span>,<span class="st">"income"</span>]))</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Expected value of income with age above or equal 65</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>E_3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">65</span>,<span class="st">"income"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol class="example" type="1">
+<li>A list whose numbering</li>
+</ol>
+<p>continues after</p>
+<ol start="2" class="example" type="1">
+<li>an interruption</li>
+</ol>
+</section>
+<section id="tables" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Tables</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Right</th>
+<th style="text-align: left;">Left</th>
+<th>Default</th>
+<th style="text-align: center;">Center</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">12</td>
+<td>12</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">123</td>
+<td style="text-align: left;">123</td>
+<td>123</td>
+<td style="text-align: center;">123</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1</td>
+<td>1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="source-code" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Source Code</h1>
+<p>Use ``` to delimit blocks of source code:</p>
+<pre><code>code</code></pre>
+<p>Add a language to syntax highlight code blocks:</p>
+<div class="cell" data-hash="01_probability_org_cache/html/unnamed-chunk-1_83ee8bb183ce04ea74029f9679588963">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 2</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="01_probability_org_cache/html/unnamed-chunk-2_d6ba64441298dde5a2d00d889f554b04">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>cars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["speed"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["dist"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"2"},{"1":"4","2":"10"},{"1":"7","2":"4"},{"1":"7","2":"22"},{"1":"8","2":"16"},{"1":"9","2":"10"},{"1":"10","2":"18"},{"1":"10","2":"26"},{"1":"10","2":"34"},{"1":"11","2":"17"},{"1":"11","2":"28"},{"1":"12","2":"14"},{"1":"12","2":"20"},{"1":"12","2":"24"},{"1":"12","2":"28"},{"1":"13","2":"26"},{"1":"13","2":"34"},{"1":"13","2":"34"},{"1":"13","2":"46"},{"1":"14","2":"26"},{"1":"14","2":"36"},{"1":"14","2":"60"},{"1":"14","2":"80"},{"1":"15","2":"20"},{"1":"15","2":"26"},{"1":"15","2":"54"},{"1":"16","2":"32"},{"1":"16","2":"40"},{"1":"17","2":"32"},{"1":"17","2":"40"},{"1":"17","2":"50"},{"1":"18","2":"42"},{"1":"18","2":"56"},{"1":"18","2":"76"},{"1":"18","2":"84"},{"1":"19","2":"36"},{"1":"19","2":"46"},{"1":"19","2":"68"},{"1":"20","2":"32"},{"1":"20","2":"48"},{"1":"20","2":"52"},{"1":"20","2":"56"},{"1":"20","2":"64"},{"1":"22","2":"66"},{"1":"23","2":"54"},{"1":"24","2":"70"},{"1":"24","2":"92"},{"1":"24","2":"93"},{"1":"24","2":"120"},{"1":"25","2":"85"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="01_probability_org_cache/html/unnamed-chunk-3_a9fc94973a7164407a4d05934e3325a4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plot</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01_probability_org_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="01_probability_org_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
 </div>
 
 
@@ -647,6 +747,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom"});</script>
 
 
 

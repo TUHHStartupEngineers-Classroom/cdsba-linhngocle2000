@@ -18,7 +18,7 @@
     "href": "content/01_journal/02_statistics.html",
     "title": "Statistical Concepts",
     "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
+    "text": "1 Assignments\n\nExpected value, variance, standard deviation:\n\nExpected value of\n\nage: \\(E[age] = 33.471\\)\nincome: \\(E[income] = 3510.731\\)\n\nVariance of\n\nage: \\(Var[age] = 340.6078\\)\nincome: \\(Var[income] = 8625646\\)\n\nStandard deviation of\n\nage: \\(\\sigma = 18.45556\\)\nincome: \\(\\sigma = 2936.945\\)\n\n\n\n\n# Functions used in R for the computation\nrandom_vars &lt;- readRDS(\"files/random_vars.rds\")\n# Expected value of \"age\"\nE_age &lt;- mean(unlist(random_vars[\"age\"]))\n# Expected value of \"income\"\nE_income &lt;- mean(unlist(random_vars[\"income\"]))\n# Variance of \"age\"\nVar_age &lt;- var(random_vars[\"age\"])\n# Variance of \"income\"\nVar_income &lt;- var(random_vars[\"income\"])\n# Standard deviation of \"age\"\nStdev_age &lt;- sd(unlist(random_vars[\"age\"]))\n# Standard deviation of \"income\"\nStdev_income &lt;- sd(unlist(random_vars[\"income\"]))\n\n\nComparing standard deviations between age and income may not provide meaningful insights. The two variables are different types of data, thus they have different ranges. Age has a range from 0 to 99, but income has a range from 0 to 10485. Furthermore, both variables have different measure units. Age is measured in years and income is measured in a type of currency. This makes their standard deviations also to have different unit, thus they are not comparable to each other.\nCovariance, correlation:\n\nCovariance: \\(Cov(age,income) = 29700.15\\)\nCorrelation: \\(Corr(age,income) = 0.5479432\\)\n\n\nBoth the covariance and correlation indicate a positive linear relationship between age and income. In other words, on average, when age increases, income increases proportionally.\n\n# Functions used in R for the computation\n# Covariance\nCovariance &lt;- cov(random_vars[\"age\"], random_vars[\"income\"])\n# Correlation\nCorrelation &lt;- cor(random_vars[\"age\"], random_vars[\"income\"])\n\n\nCorrelation is easier to interpret than covariance. Since correlation is a standardized measure ranges from -1 to 1, one can find out the strength of the relationship between two variables in addition to its direction. The closer the absolute value of correlation is to 1, the stronger the relationship. In contrast, covariance is not a standardized measure, since its values don’t have a specific range. Covariance only provides information to the direction of the relationship.\nConditional expected value\n\n\\(E[income|age&lt;=18] = 389.6074\\)\n\\(E[income|age \\in [18,65)] = 4685.734\\)\n\\(E[income|age&gt;=65] = 1777.237\\)\n\n\n\n# Functions used in R for the computation\n# Expected value of income with age under or equal 18\nE_1 &lt;- mean(unlist(random_vars[random_vars$age &lt;= 18,\"income\"]))\n# Expected value of income with age above or equal 18 AND under 65\nE_2 &lt;- mean(unlist(random_vars[random_vars$age &gt;= 18 & random_vars$age &lt; 65,\"income\"]))\n# Expected value of income with age above or equal 65\nE_3 &lt;- mean(unlist(random_vars[random_vars$age &gt;= 65,\"income\"]))"
   },
   {
     "objectID": "content/01_journal/04_causality.html",
@@ -67,7 +67,7 @@
     "href": "content/01_journal/01_probability.html",
     "title": "Probability Theory",
     "section": "",
-    "text": "\\(P(T \\cap S) = 0.3 \\cdot 0.2 = 0.06\\)\n\\(P(T \\cap \\bar{S}) = 0.7 \\cdot 0.6 = 0.42\\)\n\\(P(\\bar{T} \\cap S) = 0.3 \\cdot 0.8 = 0.24\\)\n\\(P(\\bar{T} \\cap \\bar{S}) = 0.7 \\cdot 0.4 = 0.28\\)\n\\(P(T \\cap S) + P(T \\cap \\bar{S}) + P(\\bar{T} \\cap S) + P(\\bar{T} \\cap \\bar{S}) = 0.06 + 0.42 + 0.24 + 0.28 = 1\\)"
+    "text": "\\(P(T \\cap S) = 0.3 \\cdot 0.2 = 0.06\\)\n\\(P(T \\cap \\overline{S}) = 0.7 \\cdot 0.6 = 0.42\\)\n\\(P(\\overline{T} \\cap S) = 0.3 \\cdot 0.8 = 0.24\\)\n\\(P(\\overline{T} \\cap \\overline{S}) = 0.7 \\cdot 0.4 = 0.28\\)\n\\(P(T \\cap S) + P(T \\cap \\overline{S}) + P(\\overline{T} \\cap S) + P(\\overline{T} \\cap \\overline{S}) = 0.06 + 0.42 + 0.24 + 0.28 = 1\\)"
   },
   {
     "objectID": "content/01_journal/01_probability.html#header-2",
@@ -95,7 +95,7 @@
     "href": "content/01_journal/01_probability.html#assignment-i",
     "title": "Probability Theory",
     "section": "",
-    "text": "\\(P(T \\cap S) = 0.3 \\cdot 0.2 = 0.06\\)\n\\(P(T \\cap \\bar{S}) = 0.7 \\cdot 0.6 = 0.42\\)\n\\(P(\\bar{T} \\cap S) = 0.3 \\cdot 0.8 = 0.24\\)\n\\(P(\\bar{T} \\cap \\bar{S}) = 0.7 \\cdot 0.4 = 0.28\\)\n\\(P(T \\cap S) + P(T \\cap \\bar{S}) + P(\\bar{T} \\cap S) + P(\\bar{T} \\cap \\bar{S}) = 0.06 + 0.42 + 0.24 + 0.28 = 1\\)"
+    "text": "\\(P(T \\cap S) = 0.3 \\cdot 0.2 = 0.06\\)\n\\(P(T \\cap \\overline{S}) = 0.7 \\cdot 0.6 = 0.42\\)\n\\(P(\\overline{T} \\cap S) = 0.3 \\cdot 0.8 = 0.24\\)\n\\(P(\\overline{T} \\cap \\overline{S}) = 0.7 \\cdot 0.4 = 0.28\\)\n\\(P(T \\cap S) + P(T \\cap \\overline{S}) + P(\\overline{T} \\cap S) + P(\\overline{T} \\cap \\overline{S}) = 0.06 + 0.42 + 0.24 + 0.28 = 1\\)"
   },
   {
     "objectID": "content/01_journal/01_probability.html#assignment-ii",
@@ -109,6 +109,20 @@
     "href": "content/01_journal/01_probability.html#assignment-iii",
     "title": "Probability Theory",
     "section": "3.1 Assignment III",
-    "text": "3.1 Assignment III\n\n\\(P(\\bar{A}|B) = \\frac{0.01*(1-0.04)}{0.97*0.04+0.01*(1-0.04)} = 0.198\\)\n\\(P(A|B) = \\frac{0.97*0.04}{0.97*0.04+0.01*(1-0.04)} = 0.802\\)"
+    "text": "3.1 Assignment III\n\n\\(P(\\overline{A}|B) = \\frac{0.01*(1-0.04)}{0.97*0.04+0.01*(1-0.04)} = 0.198\\)\n\\(P(A|B) = \\frac{0.97*0.04}{0.97*0.04+0.01*(1-0.04)} = 0.802\\)"
+  },
+  {
+    "objectID": "content/01_journal/01_probability_org.html",
+    "href": "content/01_journal/01_probability_org.html",
+    "title": "Probability Theory",
+    "section": "",
+    "text": "Note\n\n\n\nYou can delete everything in here and start fresh.\nThis is a .qmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "content/01_journal/01_probability_org.html#header-2",
+    "href": "content/01_journal/01_probability_org.html#header-2",
+    "title": "Probability Theory",
+    "section": "2.1 Header 2",
+    "text": "2.1 Header 2\n\nHeader 3\n\nHeader 4\n\nHeader 5\n\nHeader 6"
   }
 ]
