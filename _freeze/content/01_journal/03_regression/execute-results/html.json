@@ -1,0 +1,18 @@
+{
+  "hash": "969ee429a428d19cfbd0e77a990006d6",
+  "result": {
+    "markdown": "---\ntitle: \"Regression and Statistical Inference\"\n---\n\n\n# Assignment\n\n1. The data has 181 rows and 22 columns.\n\n::: {.cell hash='03_regression_cache/html/unnamed-chunk-1_1d5b713fb093d42ec1252527cec601ca'}\n\n```{.r .cell-code}\n# Functions used in R for the task\ncar_prices <- readRDS(\"files/car_prices.rds\")\ndim(car_prices)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n#> [1] 181  22\n```\n:::\n:::\n\n\n2. There are three data types in the data: `integer`, `numeric`, `character`. Numbers can be represented as different data types. Whole numbers have `integer` data types, while decimal numbers are represented as `numeric` data types. Strings are represented as `character` data types and can store not only letters,symbols or sentences but also numbers. Strings must be enclosed in single or double quotes.\n\n3. The factors that are relevant for the pricing of a car are: car width, engine size, stroke, peak rpm. These four factors are statistically significant at different levels of $\\alpha$ ($\\alpha = 0$ and $\\alpha = .001$), meaning there is a correlation between the independent variables (`carwidth`, `enginesize`, `stroke`, `peakrpm`) and the dependent variable `price`.\n\n\n::: {.cell hash='03_regression_cache/html/unnamed-chunk-2_c9bbf1372e4865a4fd87615ef7475b34'}\n\n```{.r .cell-code}\n# Functions used in R for the task\nlm_car_prices <- lm(price ~ ., data = car_prices)\nlm_summary <- summary(lm_car_prices)\n```\n:::\n\n\n4. Chosen regressor: `peakrpm`\n    1. The regressor has `integer` data type. The values of `peakrpm` are positive whole numbers without a decimal point.\n    2. An increase of one unit in `peakrpm` is related to an $2.416$ increase in `price`.\n    3. The above mentioned effect is statistically significant, since the respective p-value is lower than the significance level $\\alpha = 0$.\n\n5. I get `NA` as coefficient for the new variable `seat_heating`. This is due to the fact that some of the assumptions for a linear regression to deliver valid results are not fulfilled since the variable only takes on one unique value. The linearity, homoscedasticity and normality conditions are not fulfilled, since the variable doesn't provide any variability for the regression model. Due to this lack of information and variability, R cannot find any relationship between independent and dependent variable when performing linear regression.\n\n\n::: {.cell hash='03_regression_cache/html/unnamed-chunk-3_daabacd3b17a0b1acab5ed30c7c08068'}\n\n```{.r .cell-code}\n# Functions used in R for the task\ncar_prices <- car_prices %>% mutate(seat_heating = TRUE)\nlm_car_prices <- lm(price ~ ., data = car_prices)\nlm_summary <- summary(lm_car_prices)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"../../site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\r\n<script src=\"../../site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
