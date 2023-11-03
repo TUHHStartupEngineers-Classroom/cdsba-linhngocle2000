@@ -2,6 +2,25 @@
 title: "Causality"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Assignment
+```{r include=FALSE}
+library(tidyverse)
+```
+
+```{r}
+mozzarella <- c(9.3, 9.7, 9.7, 9.7, 9.9, 10.2, 10.5, 11, 10.6, 10.6)
+doctorates <- c(480, 501, 540, 552, 547, 622, 655, 701, 712, 708)
+year <- c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009)
+cor_data <- data.frame(year, mozzarella, doctorates)
+ylim.prim <- c(9, 12)
+ylim.sec <- c(400, 1000)
+b <- diff(ylim.prim)/diff(ylim.sec)
+a <- (ylim.prim[1] - b*ylim.sec[1])
+basic <- ggplot(cor_data, aes(x=year, y=mozzarella, color = "Mozzarella consumption")) + geom_line() + geom_point() + geom_line(aes(y = a + doctorates*b, color = "Test"), color = "cyan3") + geom_point(aes(y = a + doctorates*b), color = "cyan3") + scale_y_continuous("Mozzarella cheese consumption", sec.axis = sec_axis(~ (. - a)/b, name = "Engineering doctorates")) + scale_x_continuous("Year", breaks = cor_data$year) + ggtitle("Per capita consumption of mozzarella cheese\n correlates with\nCivil engineering doctorates awarded") + theme(plot.title = element_text(hjust=0.5, face="bold"))
+basic + labs(color="Legend")
+```
+Correlation: 95.86% (r=0.958648)
+```{r}
+cor(mozzarella, doctorates)
+```
+

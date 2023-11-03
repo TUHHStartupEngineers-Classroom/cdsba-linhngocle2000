@@ -1,0 +1,18 @@
+{
+  "hash": "f8bf896b3930bd905acc6b5240a2e77e",
+  "result": {
+    "markdown": "---\ntitle: \"Causality\"\n---\n\n\n# Assignment\n\n\n\n::: {.cell hash='04_causality_cache/html/unnamed-chunk-2_aed5406753ff909b00ca18228172d0e8'}\n\n```{.r .cell-code}\nmozzarella <- c(9.3, 9.7, 9.7, 9.7, 9.9, 10.2, 10.5, 11, 10.6, 10.6)\ndoctorates <- c(480, 501, 540, 552, 547, 622, 655, 701, 712, 708)\nyear <- c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009)\ncor_data <- data.frame(year, mozzarella, doctorates)\nylim.prim <- c(9, 12)\nylim.sec <- c(400, 1000)\nb <- diff(ylim.prim)/diff(ylim.sec)\na <- (ylim.prim[1] - b*ylim.sec[1])\nbasic <- ggplot(cor_data, aes(x=year, y=mozzarella, color = \"Mozzarella consumption\")) + geom_line() + geom_point() + geom_line(aes(y = a + doctorates*b, color = \"Test\"), color = \"cyan3\") + geom_point(aes(y = a + doctorates*b), color = \"cyan3\") + scale_y_continuous(\"Mozzarella cheese consumption\", sec.axis = sec_axis(~ (. - a)/b, name = \"Engineering doctorates\")) + scale_x_continuous(\"Year\", breaks = cor_data$year) + ggtitle(\"Per capita consumption of mozzarella cheese\\n correlates with\\nCivil engineering doctorates awarded\") + theme(plot.title = element_text(hjust=0.5, face=\"bold\"))\nbasic + labs(color=\"Legend\")\n```\n\n::: {.cell-output-display}\n![](04_causality_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\nCorrelation: 95.86% (r=0.958648)\n\n::: {.cell hash='04_causality_cache/html/unnamed-chunk-3_80f9d744dab3d93d4a9010b98ffba668'}\n\n```{.r .cell-code}\ncor(mozzarella, doctorates)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n#> [1] 0.9586478\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"../../site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\r\n<script src=\"../../site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
