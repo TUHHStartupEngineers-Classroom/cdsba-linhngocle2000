@@ -2,6 +2,98 @@
 title: "Directed Acyclic Graphs"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Assignments
+
+1. DAG of the parking spots example
+```{r include=FALSE}
+# Load packages
+library(tidyverse)
+library(dagitty)
+library(ggdag)
+library(ggplot2)
+```
+
+```{r}
+# parking spots 
+parking_spots <- dagify(
+  Y ~ X,
+  coords = list(x = c(X = 1, Y = 3),
+                y = c(X = 1, Y = 1)),
+  labels = list(X = "having parking spots",
+                Y = "sales")
+)
+
+# Plot DAG
+ggdag(parking_spots) +
+  theme_dag() +
+  geom_dag_point(color = "lightblue") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges(edge_color = "black") +
+  geom_dag_label_repel(aes(label = label))
+```
+
+2. Customer satisfaction
+```{r include=FALSE}
+customer_sat <- readRDS("files/customer_sat.rds")
+```
+    
+    1. Regress `satisfaction` on `follow_ups`
+    
+```{r}
+lm_sat_fol <- lm(satisfaction ~ follow_ups, data = customer_sat)
+summary(lm_sat_fol)
+```
+         
+  2. Regress `satisfaction` on `follow_ups` and account for `subscription`
+    
+```{r}
+lm_sat_fol_subs <- lm(satisfaction ~ follow_ups + subscription, data = customer_sat)
+summary(lm_sat_fol_subs)
+```
+
+3. The coefficient in the first case (Regress `satisfaction` on `follow_ups`) is negative, meaning an increase in follow-up calls is related to a decrease in satisfaction. However, when we account for `subscription` in the linear regression, the coefficient indicates a positive linear relationship between follow-up calls and satisfaction. This is due to the fact that the number of follow-up calls depends on the subscription, which also affects the satisfaction degree. Thus, `subscription` is a cofounder and we would result in an incorrect result if we do not account for `subscription` when performing regression. The DAG for the example looks like this
+```{r echo=FALSE}
+# Customer satisfaction
+cus_sat <- dagify(
+  X ~ Z,
+  Y ~ Z,
+  Y ~ X,
+  coords = list(x = c(Y = 3, Z = 2, X = 1),
+                y = c(Y = 0, Z = 1, X = 0)),
+  labels = list(X = "follow_ups",
+                Y = "satisfaction", 
+                Z = "subscription")
+)
+
+# Plot DAG
+ggdag(cus_sat) +
+  theme_dag() +
+  geom_dag_point(color = "lightblue") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges(edge_color = "black") +
+  geom_dag_label_repel(aes(label = label))
+```
+Looking at the DAG above, we see that there is an indirect effect induced by `subscription` on the direct causal effect of `follow_ups` on `satisfaction`. The indirect effect is a spurious correlation which is irrelevant for our research, but can falsify our results if we do not conditioned on it. By accounting for `subscription` when regressing `satisfaction` on `follow_ups`, we condition on `subscription` and keep it at a fixed value. Thus, the values of `satisfaction` are purely dependent on the values of `follow_ups`, and we are able to retrieve the causal effect from `follow_ups` to `satisfaction`. 
+
+4. Plot
+```{r}
+ggplot(customer_sat, aes(x = follow_ups, y = satisfaction,)) +
+  geom_point(color = "cornflowerblue") +
+  stat_smooth(method = "lm", se = F, color = "coral2", formula = y ~ x)
+```
+
+```{r}
+ggplot(customer_sat, aes(x = follow_ups, y = satisfaction,
+                            color = subscription, 
+                            alpha = subscription)) +
+  geom_point() +
+  stat_smooth(method = "lm", se = F, formula = y ~ x) +
+  scale_color_manual(values = c("Premium"="darkolivegreen3",
+                                "Premium+"="cornflowerblue",
+                                "Elite"="coral2")) +
+  scale_alpha_manual(values = c(1,1, 1)) +
+  theme(legend.position = "right")
+```
+
+
+
