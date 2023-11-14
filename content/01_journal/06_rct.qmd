@@ -2,6 +2,48 @@
 title: "Randomized Controlled Trials"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+```{r include=FALSE}
+abtest_online <- readRDS("files/abtest_online.rds")
+library(cobalt)
+library(MatchIt)
+library(jtools)
+```
+
+# Assignments
+
+1. Covariates Balance Plots
+```{r warning=FALSE}
+m.out <- MatchIt::matchit(chatbot ~ previous_visit + mobile_device, data = abtest_online)
+bal.plot(m.out, var.name = "previous_visit")
+bal.plot(m.out, var.name = "mobile_device")
+```
+
+From the plots we observe that in general, the covariates are balanced across the groups. However, for `previous_visit` there are slightly fewer control units than treated units so that not all units get a match. Especially, the plot "Distributional Balance for `previous_visit`" shows that the from `previous_visit = 7`, there are no control units matched to the treated units.
+
+2. Regress `chatbot` on `purchase_amount`
+```{r}
+# Functions used in R for the task
+lm_sales <- lm(purchase_amount ~ chatbot, data = abtest_online)
+summary(lm_sales)
+jtools::effect_plot(lm_sales, pred = chatbot)
+```
+
+The coefficient of the regression is $-7.0756$ for `chatbot = TRUE`. This means that the sales dropped for the group of customers that were directed to a chatbot. The result also reflects in the plot. 
+
+3. The chosen subgroup is mobile users.
+```{r}
+# Functions used in R for the task
+lm_CATE <- lm(purchase_amount ~ chatbot*mobile_device, data = abtest_online)
+summary(lm_CATE)
+```
+
+4. Logistic regression of `purchase`
+```{r}
+# Functions used in R for the task
+logreg <- glm(purchase ~ chatbot, data = abtest_online, family=binomial)
+summary(logreg)
+odds_ratio <- exp(-0.98939)
+percentage <- odds_ratio/(1+odds_ratio)
+```
+
+The coefficient for `chatbot = TRUE` is $-0.98939$ which corresponds to the log of odds ratio between the group of customers that used the chatbot and that interacted with human customer service. The log odds is the logarithm of the odds, which is the ratio of something happening to something not happening. The odds ratio equals $0.37$ is less than $1$, which means that it is unlikely that a customer using a chatbot will purchase something. In particular, the odds of purchasing something for customers who didn't use a chatbot are about $27\%$ higher than the odds for customers who used a chatbot.
