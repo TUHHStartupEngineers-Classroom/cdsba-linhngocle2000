@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Oliver Mork">
-
+<meta name="author" content="Linh Ngoc Le">
 <title>MyLabJournal - Matching and Subclassification</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -43,7 +73,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,17 +94,14 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -84,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -92,8 +121,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -134,27 +163,27 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li><a href="#dag-of-online-store" id="toc-dag-of-online-store" class="nav-link active" data-scroll-target="#dag-of-online-store"><span class="header-section-number">1</span> DAG of online store</a></li>
+  <li><a href="#naive-estimate-of-the-average-treatment-effect" id="toc-naive-estimate-of-the-average-treatment-effect" class="nav-link" data-scroll-target="#naive-estimate-of-the-average-treatment-effect"><span class="header-section-number">2</span> Naive estimate of the average treatment effect</a></li>
+  <li><a href="#matching-methods-for-more-precise-estimates" id="toc-matching-methods-for-more-precise-estimates" class="nav-link" data-scroll-target="#matching-methods-for-more-precise-estimates"><span class="header-section-number">3</span> Matching methods for more precise estimates</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Matching and Subclassification</h1>
 </div>
 
@@ -165,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oliver Mork </p>
+             <p>Linh Ngoc Le </p>
           </div>
   </div>
     
@@ -174,26 +203,328 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><section id="dag-of-online-store" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="dag-of-online-store">
+<span class="header-section-number">1</span> DAG of online store</h2>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-2_10c2d3b0973dbb918692da17c275855c">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>online_store <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  C <span class="sc">~</span> A,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  C <span class="sc">~</span> B,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  D <span class="sc">~</span> C,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  D <span class="sc">~</span> A,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  D <span class="sc">~</span> B,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  E <span class="sc">~</span> A,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  E <span class="sc">~</span> B,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  E <span class="sc">~</span> D,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="at">coords =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="dv">3</span>, <span class="at">B =</span> <span class="dv">4</span>, <span class="at">C =</span> <span class="dv">3</span>, <span class="at">D =</span> <span class="dv">1</span>, <span class="at">E =</span> <span class="dv">5</span>),</span>
+<span id="cb1-11"><a href="#cb1-11"></a>                <span class="at">y =</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="dv">2</span>, <span class="at">B =</span> <span class="dv">2</span>, <span class="at">C =</span> <span class="dv">3</span>, <span class="at">D =</span> <span class="dv">1</span>, <span class="at">E =</span> <span class="dv">1</span>)),</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="at">labels =</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="st">"age"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>                <span class="at">B =</span> <span class="st">"sex"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14"></a>                <span class="at">C =</span> <span class="st">"pre_avg_purch"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15"></a>                <span class="at">D =</span> <span class="st">"card"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16"></a>                <span class="at">E =</span> <span class="st">"avg_purch"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17"></a>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Plot DAG</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="fu">ggdag</span>(online_store) <span class="sc">+</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>  <span class="fu">theme_dag</span>() <span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>  <span class="fu">geom_dag_point</span>(<span class="at">color =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>  <span class="fu">geom_dag_text</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>  <span class="fu">geom_dag_edges</span>(<span class="at">edge_color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>  <span class="fu">geom_dag_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> label))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="07_matching_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="07_matching_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="naive-estimate-of-the-average-treatment-effect" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="naive-estimate-of-the-average-treatment-effect">
+<span class="header-section-number">2</span> Naive estimate of the average treatment effect</h2>
+<p>We estimate the average treatment effect by taking the difference between expected values of sales in treatment group (plus membership) and control group (non plus membership).</p>
+<p><span class="math inline">\(ATE = E[avg\_purch|card = 1] - E[avg\_purch|card = 1] = 25.2195\)</span></p>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-3_181aeb1282aa502aac38dddb6b2dee0a">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Expected values in treatment group</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>E_avgpurch_card_1 <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(membership[membership<span class="sc">$</span>card <span class="sc">==</span> <span class="dv">1</span>,<span class="st">"avg_purch"</span>]))</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Expected values in control group</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>E_avgpurch_card_0 <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(membership[membership<span class="sc">$</span>card <span class="sc">==</span> <span class="dv">0</span>,<span class="st">"avg_purch"</span>]))</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># Naive estimate of ATE</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>E_avgpurch_card_1 <span class="sc">-</span> E_avgpurch_card_0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 25.2195</code></pre>
+</div>
+</div>
+<p>A naive estimate obtained by regressing <code>avg_purch</code> on <code>card</code>.</p>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-4_61b6a2736698082fd2c57b645110b326">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>model_naive <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span> card, <span class="at">data =</span> membership)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">summary</span>(model_naive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = membership)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -101.515  -20.684   -0.199   20.424  120.166 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  65.9397     0.3965  166.29   &lt;2e-16 ***
+#&gt; card         25.2195     0.6095   41.38   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 30.11 on 9998 degrees of freedom
+#&gt; Multiple R-squared:  0.1462, Adjusted R-squared:  0.1461 
+#&gt; F-statistic:  1712 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section><section id="matching-methods-for-more-precise-estimates" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="matching-methods-for-more-precise-estimates">
+<span class="header-section-number">3</span> Matching methods for more precise estimates</h2>
+<section id="coarsened-exact-matching" class="level4"><h4 class="anchored" data-anchor-id="coarsened-exact-matching">1. (Coarsened) Exact Matching</h4>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-5_4394ddcb907ce89ac4ef09456ce75cac">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Without specifying coarsening</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># (1) Matching</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>cem <span class="ot">&lt;-</span> <span class="fu">matchit</span>(card <span class="sc">~</span> age <span class="sc">+</span> sex <span class="sc">+</span> pre_avg_purch,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>               <span class="at">data =</span> membership, </span>
+<span id="cb6-5"><a href="#cb6-5"></a>               <span class="at">method =</span> <span class="st">'cem'</span>, </span>
+<span id="cb6-6"><a href="#cb6-6"></a>               <span class="at">estimand =</span> <span class="st">'ATE'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># Use matched data</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>df_cem <span class="ot">&lt;-</span> <span class="fu">match.data</span>(cem)</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># (2) Estimation</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>model_cem <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span> card, <span class="at">data =</span> df_cem, <span class="at">weights =</span> weights)</span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="fu">summary</span>(model_cem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = df_cem, weights = weights)
+#&gt; 
+#&gt; Weighted Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -159.349  -20.459   -0.151   19.863  161.528 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  69.9896     0.3984  175.66   &lt;2e-16 ***
+#&gt; card         15.2043     0.6137   24.77   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 30.12 on 9878 degrees of freedom
+#&gt; Multiple R-squared:  0.0585, Adjusted R-squared:  0.0584 
+#&gt; F-statistic: 613.7 on 1 and 9878 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section><section id="nearest-neighbor-matching" class="level4"><h4 class="anchored" data-anchor-id="nearest-neighbor-matching">2. Nearest-Neighbor Matching</h4>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-6_3983567d0a9ff6e272770e4184a1d76a">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># (1) Matching</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># replace: one-to-one or one-to-many matching</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>nn <span class="ot">&lt;-</span> <span class="fu">matchit</span>(card <span class="sc">~</span> age <span class="sc">+</span> sex <span class="sc">+</span> pre_avg_purch,</span>
+<span id="cb8-4"><a href="#cb8-4"></a>              <span class="at">data =</span> membership,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>              <span class="at">method =</span> <span class="st">"nearest"</span>, </span>
+<span id="cb8-6"><a href="#cb8-6"></a>              <span class="at">distance =</span> <span class="st">"mahalanobis"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7"></a>              <span class="at">replace =</span> T)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># Use matched data</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>df_nn <span class="ot">&lt;-</span> <span class="fu">match.data</span>(nn)</span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co"># (2) Estimation</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a>model_nn <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span> card, <span class="at">data =</span> df_nn, <span class="at">weights =</span> weights)</span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="fu">summary</span>(model_nn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = df_nn, weights = weights)
+#&gt; 
+#&gt; Weighted Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -132.730  -21.288   -1.675   18.318  146.631 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  76.5634     0.5881  130.19   &lt;2e-16 ***
+#&gt; card         14.5957     0.7514   19.42   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 30.43 on 6907 degrees of freedom
+#&gt; Multiple R-squared:  0.05179,    Adjusted R-squared:  0.05166 
+#&gt; F-statistic: 377.3 on 1 and 6907 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section><section id="inverse-probability-weighting" class="level4"><h4 class="anchored" data-anchor-id="inverse-probability-weighting">3. Inverse Probability Weighting</h4>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-7_e6638e851d99f44e837722d8dece9ba0">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># (1) Propensity scores</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>model_prop <span class="ot">&lt;-</span> <span class="fu">glm</span>(card <span class="sc">~</span> age <span class="sc">+</span> sex <span class="sc">+</span> pre_avg_purch,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                  <span class="at">data =</span> membership,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(model_prop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; glm(formula = card ~ age + sex + pre_avg_purch, family = binomial(link = "logit"), 
+#&gt;     data = membership)
+#&gt; 
+#&gt; Coefficients:
+#&gt;                 Estimate Std. Error z value Pr(&gt;|z|)    
+#&gt; (Intercept)   -1.4298676  0.0752043 -19.013   &lt;2e-16 ***
+#&gt; age            0.0011486  0.0017761   0.647    0.518    
+#&gt; sex            0.0359388  0.0412622   0.871    0.384    
+#&gt; pre_avg_purch  0.0148262  0.0009264  16.003   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; (Dispersion parameter for binomial family taken to be 1)
+#&gt; 
+#&gt;     Null deviance: 13626  on 9999  degrees of freedom
+#&gt; Residual deviance: 13249  on 9996  degrees of freedom
+#&gt; AIC: 13257
+#&gt; 
+#&gt; Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Add propensities to table</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>df_aug <span class="ot">&lt;-</span> membership <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">propensity =</span> <span class="fu">predict</span>(model_prop, <span class="at">type =</span> <span class="st">"response"</span>))</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Extend data by IPW scores</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>df_ipw <span class="ot">&lt;-</span> df_aug <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="at">ipw =</span> (card<span class="sc">/</span>propensity) <span class="sc">+</span> ((<span class="dv">1</span><span class="sc">-</span>card) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>propensity)))</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co"># (2) Estimation</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>model_ipw <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span> card,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>                <span class="at">data =</span> df_ipw, </span>
+<span id="cb12-11"><a href="#cb12-11"></a>                <span class="at">weights =</span> ipw)</span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="fu">summary</span>(model_ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = df_ipw, weights = ipw)
+#&gt; 
+#&gt; Weighted Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -205.353  -28.995   -0.275   28.787  214.307 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  70.2628     0.4320  162.66   &lt;2e-16 ***
+#&gt; card         14.9573     0.6109   24.48   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 43.19 on 9998 degrees of freedom
+#&gt; Multiple R-squared:  0.05657,    Adjusted R-squared:  0.05647 
+#&gt; F-statistic: 599.5 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Plot histogram of estimated propensities</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">ggplot</span>(df_aug, <span class="fu">aes</span>(<span class="at">x =</span> propensity)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> .<span class="dv">8</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="07_matching_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="07_matching_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="comparison-of-methods" class="level4"><h4 class="anchored" data-anchor-id="comparison-of-methods">4. Comparison of methods</h4>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-8_4d74f04e6e76252053290a3b2048a68d">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Summary of naive and matching methods</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">"Naive"</span> <span class="ot">=</span> model_naive,</span>
+<span id="cb15-3"><a href="#cb15-3"></a>                                <span class="st">"CEM"</span>   <span class="ot">=</span> model_cem,</span>
+<span id="cb15-4"><a href="#cb15-4"></a>                                <span class="st">"NN"</span>    <span class="ot">=</span> model_nn,</span>
+<span id="cb15-5"><a href="#cb15-5"></a>                                <span class="st">"IPW"</span>   <span class="ot">=</span> model_ipw))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Naive</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">CEM</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">NN</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;IPW</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">65.940</td>
+<td style="text-align: center;">69.990</td>
+<td style="text-align: center;">76.563</td>
+<td style="text-align: center;">70.263</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.397)</td>
+<td style="text-align: center;">(0.398)</td>
+<td style="text-align: center;">(0.588)</td>
+<td style="text-align: center;">(0.432)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">card</td>
+<td style="text-align: center;">25.220</td>
+<td style="text-align: center;">15.204</td>
+<td style="text-align: center;">14.596</td>
+<td style="text-align: center;">14.957</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.610)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.614)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.751)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(0.611)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">10000</td>
+<td style="text-align: center;">9880</td>
+<td style="text-align: center;">6909</td>
+<td style="text-align: center;">10000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.146</td>
+<td style="text-align: center;">0.058</td>
+<td style="text-align: center;">0.052</td>
+<td style="text-align: center;">0.057</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 Adj.</td>
+<td style="text-align: center;">0.146</td>
+<td style="text-align: center;">0.058</td>
+<td style="text-align: center;">0.052</td>
+<td style="text-align: center;">0.056</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: center;">96483.2</td>
+<td style="text-align: center;">95595.0</td>
+<td style="text-align: center;">67134.2</td>
+<td style="text-align: center;">97072.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BIC</td>
+<td style="text-align: center;">96504.8</td>
+<td style="text-align: center;">95616.6</td>
+<td style="text-align: center;">67154.7</td>
+<td style="text-align: center;">97093.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log.Lik.</td>
+<td style="text-align: center;">−48238.590</td>
+<td style="text-align: center;">−47794.497</td>
+<td style="text-align: center;">−33564.098</td>
+<td style="text-align: center;">−48533.031</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RMSE</td>
+<td style="text-align: center;">30.11</td>
+<td style="text-align: center;">30.08</td>
+<td style="text-align: center;">30.17</td>
+<td style="text-align: center;">30.54</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
-</div>
-</div>
 
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -542,7 +873,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":true,"descPosition":"bottom"});</script>
 
 
 </body></html>

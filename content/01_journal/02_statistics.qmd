@@ -1,22 +1,23 @@
 ---
 title: "Statistical Concepts"
 ---
-
-# Assignments
-
-1. Expected value, variance, standard deviation:
-    1. Expected value of
-        i)  age: $E[age] = 33.471$
-        ii) income: $E[income] = 3510.731$
-    2. Variance of
-        i)  age: $Var[age] = 340.6078$
-        ii) income: $Var[income] = 8625646$
-    3. Standard deviation of
-        i)  age: $\sigma = 18.45556$
-        ii) income: $\sigma = 2936.945$
-```{r}
-# Functions used in R for the computation
+```{r include=FALSE}
 random_vars <- readRDS("files/random_vars.rds")
+```
+
+## Expected value, variance, standard deviation
+
+1. Expected value of
+    i)  age: $E[age] = 33.471$
+    ii) income: $E[income] = 3510.731$
+2. Variance of
+    i)  age: $Var[age] = 340.6078$
+    ii) income: $Var[income] = 8625646$
+3. Standard deviation of
+    i)  age: $\sigma = 18.45556$
+    ii) income: $\sigma = 2936.945$
+    
+```{r}
 # Expected value of "age"
 E_age <- mean(unlist(random_vars["age"]))
 # Expected value of "income"
@@ -31,29 +32,35 @@ Stdev_age <- sd(unlist(random_vars["age"]))
 Stdev_income <- sd(unlist(random_vars["income"]))
 ```
 
-2. Comparing standard deviations between age and income may not provide meaningful insights. The two variables are different types of data, thus they have different ranges. Age has a range from 0 to 99, but income has a range from 0 to 10485. Furthermore, both variables have different measure units. Age is measured in years and income is measured in a type of currency. This makes their standard deviations also to have different unit, thus they are not comparable to each other.
+## Comparing standard deviations
 
-3. Covariance, correlation:
-    1. Covariance: $Cov(age,income) = 29700.15$
-    2. Correlation: $Corr(age,income) = 0.5479432$
+Comparing standard deviations between age and income may not provide meaningful insights. The two variables are different types of data, thus they have different ranges. Age has a range from 0 to 99, but income has a range from 0 to 10485. Furthermore, both variables have different measure units. Age is measured in years and income is measured in a type of currency. This makes their standard deviations also to have different unit, thus they are not comparable to each other.
+
+## Computing covariance and correlation
+
+1. Covariance: $Cov(age,income) = 29700.15$
+2. Correlation: $Corr(age,income) = 0.5479432$
     
 Both the covariance and correlation indicate a positive linear relationship between age and income. In other words, on average, when age increases, income increases proportionally. 
+
 ```{r}
-# Functions used in R for the computation
 # Covariance
 Covariance <- cov(random_vars["age"], random_vars["income"])
 # Correlation
 Correlation <- cor(random_vars["age"], random_vars["income"])
 ```
 
-4. Correlation is easier to interpret than covariance. Since correlation is a standardized measure ranges from -1 to 1, one can find out the strength of the relationship between two variables in addition to its direction. The closer the absolute value of correlation is to 1, the stronger the relationship. In contrast, covariance is not a standardized measure, since its values don't have a specific range. Covariance only provides information to the direction of the relationship.
+## Interpretation of covariance and correlation
 
-5. Conditional expected value
-    1. $E[income|age<=18] = 389.6074$
-    2. $E[income|age \in [18,65)] = 4685.734$
-    3. $E[income|age>=65] = 1777.237$
+Correlation is easier to interpret than covariance. Since correlation is a standardized measure ranges from -1 to 1, one can find out the strength of the relationship between two variables in addition to its direction. The closer the absolute value of correlation is to 1, the stronger the relationship. In contrast, covariance is not a standardized measure, since its values don't have a specific range. Covariance only provides information to the direction of the relationship.
+
+## Conditional expected value
+
+1. $E[income|age<=18] = 389.6074$
+2. $E[income|age \in [18,65)] = 4685.734$
+3. $E[income|age>=65] = 1777.237$
+
 ```{r}
-# Functions used in R for the computation
 # Expected value of income with age under or equal 18
 E_1 <- mean(unlist(random_vars[random_vars$age <= 18,"income"]))
 # Expected value of income with age above or equal 18 AND under 65

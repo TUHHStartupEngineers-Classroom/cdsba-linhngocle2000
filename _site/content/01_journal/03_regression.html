@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Linh Ngoc Le">
-
 <title>MyLabJournal - Regression and Statistical Inference</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -76,8 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,22 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -123,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -131,8 +117,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -173,33 +159,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#assignment" id="toc-assignment" class="nav-link active" data-scroll-target="#assignment"><span class="header-section-number">1</span> Assignment</a></li>
-  </ul>
-</nav>
+<li><a href="#dimensions-of-data" id="toc-dimensions-of-data" class="nav-link active" data-scroll-target="#dimensions-of-data"><span class="header-section-number">1</span> Dimensions of data</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">2</span> Data types</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="header-section-number">3</span> Linear regression</a></li>
+  <li><a href="#analyzing-one-regressor" id="toc-analyzing-one-regressor" class="nav-link" data-scroll-target="#analyzing-one-regressor"><span class="header-section-number">4</span> Analyzing one regressor</a></li>
+  <li><a href="#regression-with-seat_heating" id="toc-regression-with-seat_heating" class="nav-link" data-scroll-target="#regression-with-seat_heating"><span class="header-section-number">5</span> Regression with <code>seat_heating</code></a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Regression and Statistical Inference</h1>
 </div>
 
@@ -219,51 +201,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header>
-
-<section id="assignment" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Assignment</h1>
-<ol type="1">
-<li>The data has 181 rows and 22 columns.</li>
-</ol>
-<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-1_1d5b713fb093d42ec1252527cec601ca">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Functions used in R for the task</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>car_prices <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"files/car_prices.rds"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">dim</span>(car_prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</header><section id="dimensions-of-data" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="dimensions-of-data">
+<span class="header-section-number">1</span> Dimensions of data</h2>
+<p>The data has 181 rows and 22 columns.</p>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-2_09e68b230b384880a7a6253b7d279086">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">dim</span>(car_prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 181  22</code></pre>
 </div>
 </div>
-<ol start="2" type="1">
-<li><p>There are three data types in the data: <code>integer</code>, <code>numeric</code>, <code>character</code>. Numbers can be represented as different data types. Whole numbers have <code>integer</code> data types, while decimal numbers are represented as <code>numeric</code> data types. Strings are represented as <code>character</code> data types and can store not only letters,symbols or sentences but also numbers. Strings must be enclosed in single or double quotes.</p></li>
-<li><p>The factors that are relevant for the pricing of a car are: car width, engine size, stroke, peak rpm. These four factors are statistically significant at different levels of <span class="math inline">\(\alpha\)</span> (<span class="math inline">\(\alpha = 0\)</span> and <span class="math inline">\(\alpha = .001\)</span>), meaning there is a correlation between the independent variables (<code>carwidth</code>, <code>enginesize</code>, <code>stroke</code>, <code>peakrpm</code>) and the dependent variable <code>price</code>.</p></li>
-</ol>
-<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-2_c9bbf1372e4865a4fd87615ef7475b34">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Functions used in R for the task</span></span>
+</section><section id="data-types" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="data-types">
+<span class="header-section-number">2</span> Data types</h2>
+<p>There are three data types in the data: <code>integer</code>, <code>numeric</code>, <code>character</code>. Numbers can be represented as different data types. Whole numbers have <code>integer</code> data types, while decimal numbers are represented as <code>numeric</code> data types. Strings are represented as <code>character</code> data types and can store not only letters,symbols or sentences but also numbers. Strings must be enclosed in single or double quotes.</p>
+</section><section id="linear-regression" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="linear-regression">
+<span class="header-section-number">3</span> Linear regression</h2>
+<p>The factors that are relevant for the pricing of a car are: car width, engine size, stroke, peak rpm. These four factors are statistically significant at different levels of <span class="math inline">\(\alpha\)</span> (<span class="math inline">\(\alpha = 0\)</span> and <span class="math inline">\(\alpha = .001\)</span>), meaning there is a correlation between the independent variables (<code>carwidth</code>, <code>enginesize</code>, <code>stroke</code>, <code>peakrpm</code>) and the dependent variable <code>price</code>.</p>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-3_6a9494349829a22b919d9bd6c75a18df">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Linear regression of price on all regressors</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>lm_car_prices <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> ., <span class="at">data =</span> car_prices)</span>
 <span id="cb3-3"><a href="#cb3-3"></a>lm_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_car_prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="4" type="1">
-<li>Chosen regressor: <code>peakrpm</code>
-<ol type="1">
-<li>The regressor has <code>integer</code> data type. The values of <code>peakrpm</code> are positive whole numbers without a decimal point.</li>
-<li>An increase of one unit in <code>peakrpm</code> is related to an <span class="math inline">\(2.416\)</span> increase in <code>price</code>.</li>
-<li>The above mentioned effect is statistically significant, since the respective p-value is lower than the significance level <span class="math inline">\(\alpha = 0\)</span>.</li>
-</ol></li>
-<li>I get <code>NA</code> as coefficient for the new variable <code>seat_heating</code>. This is due to the fact that some of the assumptions for a linear regression to deliver valid results are not fulfilled since the variable only takes on one unique value. The linearity, homoscedasticity and normality conditions are not fulfilled, since the variable doesn’t provide any variability for the regression model. Due to this lack of information and variability, R cannot find any relationship between independent and dependent variable when performing linear regression.</li>
-</ol>
-<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-3_daabacd3b17a0b1acab5ed30c7c08068">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Functions used in R for the task</span></span>
+</section><section id="analyzing-one-regressor" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="analyzing-one-regressor">
+<span class="header-section-number">4</span> Analyzing one regressor</h2>
+<p>Chosen regressor: <code>peakrpm</code> 1. The regressor has <code>integer</code> data type. The values of <code>peakrpm</code> are positive whole numbers without a decimal point. 2. An increase of one unit in <code>peakrpm</code> is related to an <span class="math inline">\(2.416\)</span> increase in <code>price</code>. 3. The above mentioned effect is statistically significant, since the respective p-value is lower than the significance level <span class="math inline">\(\alpha = 0\)</span>.</p>
+</section><section id="regression-with-seat_heating" class="level2" data-number="5"><h2 data-number="5" class="anchored" data-anchor-id="regression-with-seat_heating">
+<span class="header-section-number">5</span> Regression with <code>seat_heating</code>
+</h2>
+<p>I get <code>NA</code> as coefficient for the new variable <code>seat_heating</code>. This is due to the fact that some of the assumptions for a linear regression to deliver valid results are not fulfilled since the variable only takes on one unique value. The linearity, homoscedasticity and normality conditions are not fulfilled, since the variable doesn’t provide any variability for the regression model. Due to this lack of information and variability, R cannot find any relationship between independent and dependent variable when performing linear regression.</p>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-4_8e3785091aa5151d2c660100b1b447bb">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Add variable 'seat_heating' to data</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>car_prices <span class="ot">&lt;-</span> car_prices <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">seat_heating =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>lm_car_prices <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> ., <span class="at">data =</span> car_prices)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>lm_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_car_prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Linear regression of price on all regressors</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>lm_car_prices <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> ., <span class="at">data =</span> car_prices)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>lm_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_car_prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

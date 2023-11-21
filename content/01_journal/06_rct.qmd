@@ -9,10 +9,11 @@ library(MatchIt)
 library(jtools)
 ```
 
-# Assignments
 
-1. Covariates Balance Plots
+## Covariates Balance Plots
+
 ```{r warning=FALSE}
+# Plot covariates balance
 m.out <- MatchIt::matchit(chatbot ~ previous_visit + mobile_device, data = abtest_online)
 bal.plot(m.out, var.name = "previous_visit")
 bal.plot(m.out, var.name = "mobile_device")
@@ -20,29 +21,37 @@ bal.plot(m.out, var.name = "mobile_device")
 
 From the plots we observe that in general, the covariates are balanced across the groups. However, for `previous_visit` there are slightly fewer control units than treated units so that not all units get a match. Especially, the plot "Distributional Balance for `previous_visit`" shows that the from `previous_visit = 7`, there are no control units matched to the treated units.
 
-2. Regress `chatbot` on `purchase_amount`
+## Regress `chatbot` on `purchase_amount`
+
 ```{r}
-# Functions used in R for the task
 lm_sales <- lm(purchase_amount ~ chatbot, data = abtest_online)
 summary(lm_sales)
+
+# Plot result
 jtools::effect_plot(lm_sales, pred = chatbot)
 ```
 
 The coefficient of the regression is $-7.0756$ for `chatbot = TRUE`. This means that the sales dropped for the group of customers that were directed to a chatbot. The result also reflects in the plot. 
 
-3. The chosen subgroup is mobile users.
+## Subgroup-specific effects
+
+The chosen subgroup is mobile users.
+
 ```{r}
-# Functions used in R for the task
+# Linear regression on subgroup
 lm_CATE <- lm(purchase_amount ~ chatbot*mobile_device, data = abtest_online)
 summary(lm_CATE)
 ```
 
-4. Logistic regression of `purchase`
+## Logistic regression of `purchase`
+
 ```{r}
-# Functions used in R for the task
 logreg <- glm(purchase ~ chatbot, data = abtest_online, family=binomial)
 summary(logreg)
+
+# Calculate odds ratio
 odds_ratio <- exp(-0.98939)
+# Convert odds ratio to percentage
 percentage <- odds_ratio/(1+odds_ratio)
 ```
 

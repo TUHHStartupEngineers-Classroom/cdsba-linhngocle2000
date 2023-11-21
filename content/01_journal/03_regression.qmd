@@ -2,35 +2,49 @@
 title: "Regression and Statistical Inference"
 ---
 
-# Assignment
-
-1. The data has 181 rows and 22 columns.
-```{r}
-# Functions used in R for the task
+```{r include=FALSE}
 car_prices <- readRDS("files/car_prices.rds")
+```
+
+
+## Dimensions of data
+
+The data has 181 rows and 22 columns.
+
+```{r}
 dim(car_prices)
 ```
 
-2. There are three data types in the data: `integer`, `numeric`, `character`. Numbers can be represented as different data types. Whole numbers have `integer` data types, while decimal numbers are represented as `numeric` data types. Strings are represented as `character` data types and can store not only letters,symbols or sentences but also numbers. Strings must be enclosed in single or double quotes.
+## Data types
 
-3. The factors that are relevant for the pricing of a car are: car width, engine size, stroke, peak rpm. These four factors are statistically significant at different levels of $\alpha$ ($\alpha = 0$ and $\alpha = .001$), meaning there is a correlation between the independent variables (`carwidth`, `enginesize`, `stroke`, `peakrpm`) and the dependent variable `price`.
+There are three data types in the data: `integer`, `numeric`, `character`. Numbers can be represented as different data types. Whole numbers have `integer` data types, while decimal numbers are represented as `numeric` data types. Strings are represented as `character` data types and can store not only letters,symbols or sentences but also numbers. Strings must be enclosed in single or double quotes.
+
+## Linear regression
+
+The factors that are relevant for the pricing of a car are: car width, engine size, stroke, peak rpm. These four factors are statistically significant at different levels of $\alpha$ ($\alpha = 0$ and $\alpha = .001$), meaning there is a correlation between the independent variables (`carwidth`, `enginesize`, `stroke`, `peakrpm`) and the dependent variable `price`.
 
 ```{r}
-# Functions used in R for the task
+# Linear regression of price on all regressors
 lm_car_prices <- lm(price ~ ., data = car_prices)
 lm_summary <- summary(lm_car_prices)
 ```
 
-4. Chosen regressor: `peakrpm`
-    1. The regressor has `integer` data type. The values of `peakrpm` are positive whole numbers without a decimal point.
-    2. An increase of one unit in `peakrpm` is related to an $2.416$ increase in `price`.
-    3. The above mentioned effect is statistically significant, since the respective p-value is lower than the significance level $\alpha = 0$.
+## Analyzing one regressor
 
-5. I get `NA` as coefficient for the new variable `seat_heating`. This is due to the fact that some of the assumptions for a linear regression to deliver valid results are not fulfilled since the variable only takes on one unique value. The linearity, homoscedasticity and normality conditions are not fulfilled, since the variable doesn't provide any variability for the regression model. Due to this lack of information and variability, R cannot find any relationship between independent and dependent variable when performing linear regression.
+Chosen regressor: `peakrpm`
+1. The regressor has `integer` data type. The values of `peakrpm` are positive whole numbers without a decimal point.
+2. An increase of one unit in `peakrpm` is related to an $2.416$ increase in `price`.
+3. The above mentioned effect is statistically significant, since the respective p-value is lower than the significance level $\alpha = 0$.
+
+## Regression with `seat_heating`
+
+I get `NA` as coefficient for the new variable `seat_heating`. This is due to the fact that some of the assumptions for a linear regression to deliver valid results are not fulfilled since the variable only takes on one unique value. The linearity, homoscedasticity and normality conditions are not fulfilled, since the variable doesn't provide any variability for the regression model. Due to this lack of information and variability, R cannot find any relationship between independent and dependent variable when performing linear regression.
 
 ```{r eval=FALSE}
-# Functions used in R for the task
+# Add variable 'seat_heating' to data
 car_prices <- car_prices %>% mutate(seat_heating = TRUE)
+
+# Linear regression of price on all regressors
 lm_car_prices <- lm(price ~ ., data = car_prices)
 lm_summary <- summary(lm_car_prices)
 ```

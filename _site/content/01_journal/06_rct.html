@@ -176,7 +176,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-<li><a href="#assignments" id="toc-assignments" class="nav-link active" data-scroll-target="#assignments"><span class="header-section-number">1</span> Assignments</a></li>
+<li><a href="#covariates-balance-plots" id="toc-covariates-balance-plots" class="nav-link active" data-scroll-target="#covariates-balance-plots"><span class="header-section-number">1</span> Covariates Balance Plots</a></li>
+  <li><a href="#regress-chatbot-on-purchase_amount" id="toc-regress-chatbot-on-purchase_amount" class="nav-link" data-scroll-target="#regress-chatbot-on-purchase_amount"><span class="header-section-number">2</span> Regress <code>chatbot</code> on <code>purchase_amount</code></a></li>
+  <li><a href="#subgroup-specific-effects" id="toc-subgroup-specific-effects" class="nav-link" data-scroll-target="#subgroup-specific-effects"><span class="header-section-number">3</span> Subgroup-specific effects</a></li>
+  <li><a href="#logistic-regression-of-purchase" id="toc-logistic-regression-of-purchase" class="nav-link" data-scroll-target="#logistic-regression-of-purchase"><span class="header-section-number">4</span> Logistic regression of <code>purchase</code></a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -200,14 +203,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><section id="assignments" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Assignments</h1>
-<ol type="1">
-<li>Covariates Balance Plots</li>
-</ol>
-<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-2_29b78c2edfafc11864ed10272693584e">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>m.out <span class="ot">&lt;-</span> MatchIt<span class="sc">::</span><span class="fu">matchit</span>(chatbot <span class="sc">~</span> previous_visit <span class="sc">+</span> mobile_device, <span class="at">data =</span> abtest_online)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">bal.plot</span>(m.out, <span class="at">var.name =</span> <span class="st">"previous_visit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</header><section id="covariates-balance-plots" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="covariates-balance-plots">
+<span class="header-section-number">1</span> Covariates Balance Plots</h2>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-2_35cbda9976a0897689bb94a24793a6ab">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Plot covariates balance</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>m.out <span class="ot">&lt;-</span> MatchIt<span class="sc">::</span><span class="fu">matchit</span>(chatbot <span class="sc">~</span> previous_visit <span class="sc">+</span> mobile_device, <span class="at">data =</span> abtest_online)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">bal.plot</span>(m.out, <span class="at">var.name =</span> <span class="st">"previous_visit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="06_rct_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="06_rct_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
@@ -223,14 +224,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>From the plots we observe that in general, the covariates are balanced across the groups. However, for <code>previous_visit</code> there are slightly fewer control units than treated units so that not all units get a match. Especially, the plot “Distributional Balance for <code>previous_visit</code>” shows that the from <code>previous_visit = 7</code>, there are no control units matched to the treated units.</p>
-<ol start="2" type="1">
-<li>Regress <code>chatbot</code> on <code>purchase_amount</code>
-</li>
-</ol>
-<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-3_f1694083661d29b4367b1f8ff5edebad">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Functions used in R for the task</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>lm_sales <span class="ot">&lt;-</span> <span class="fu">lm</span>(purchase_amount <span class="sc">~</span> chatbot, <span class="at">data =</span> abtest_online)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">summary</span>(lm_sales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="regress-chatbot-on-purchase_amount" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="regress-chatbot-on-purchase_amount">
+<span class="header-section-number">2</span> Regress <code>chatbot</code> on <code>purchase_amount</code>
+</h2>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-3_64a59bcc49056213315e9fa74c82bcf6">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>lm_sales <span class="ot">&lt;-</span> <span class="fu">lm</span>(purchase_amount <span class="sc">~</span> chatbot, <span class="at">data =</span> abtest_online)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">summary</span>(lm_sales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -251,7 +250,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; Multiple R-squared:  0.0348, Adjusted R-squared:  0.03383 
 #&gt; F-statistic: 35.98 on 1 and 998 DF,  p-value: 2.787e-09</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(lm_sales, <span class="at">pred =</span> chatbot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Plot result</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>jtools<span class="sc">::</span><span class="fu">effect_plot</span>(lm_sales, <span class="at">pred =</span> chatbot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="06_rct_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="06_rct_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
@@ -260,11 +260,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The coefficient of the regression is <span class="math inline">\(-7.0756\)</span> for <code>chatbot = TRUE</code>. This means that the sales dropped for the group of customers that were directed to a chatbot. The result also reflects in the plot.</p>
-<ol start="3" type="1">
-<li>The chosen subgroup is mobile users.</li>
-</ol>
-<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-4_669fcb7f76260b098c526b7421943efb">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Functions used in R for the task</span></span>
+</section><section id="subgroup-specific-effects" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="subgroup-specific-effects">
+<span class="header-section-number">3</span> Subgroup-specific effects</h2>
+<p>The chosen subgroup is mobile users.</p>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-4_3f8779241a72b41f6693b94df77a9cc3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Linear regression on subgroup</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>lm_CATE <span class="ot">&lt;-</span> <span class="fu">lm</span>(purchase_amount <span class="sc">~</span> chatbot<span class="sc">*</span>mobile_device, <span class="at">data =</span> abtest_online)</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="fu">summary</span>(lm_CATE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -290,14 +290,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; F-statistic: 12.16 on 3 and 996 DF,  p-value: 8.034e-08</code></pre>
 </div>
 </div>
-<ol start="4" type="1">
-<li>Logistic regression of <code>purchase</code>
-</li>
-</ol>
-<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-5_0a38ce80491d17f75a9df8154dd6ee4e">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Functions used in R for the task</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>logreg <span class="ot">&lt;-</span> <span class="fu">glm</span>(purchase <span class="sc">~</span> chatbot, <span class="at">data =</span> abtest_online, <span class="at">family=</span>binomial)</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">summary</span>(logreg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="logistic-regression-of-purchase" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="logistic-regression-of-purchase">
+<span class="header-section-number">4</span> Logistic regression of <code>purchase</code>
+</h2>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-5_e87755820c26118d4e1991519e016cc2">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>logreg <span class="ot">&lt;-</span> <span class="fu">glm</span>(purchase <span class="sc">~</span> chatbot, <span class="at">data =</span> abtest_online, <span class="at">family=</span>binomial)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">summary</span>(logreg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -318,8 +316,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; 
 #&gt; Number of Fisher Scoring iterations: 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>odds_ratio <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.98939</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>percentage <span class="ot">&lt;-</span> odds_ratio<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>odds_ratio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Calculate odds ratio</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>odds_ratio <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.98939</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Convert odds ratio to percentage</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>percentage <span class="ot">&lt;-</span> odds_ratio<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>odds_ratio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The coefficient for <code>chatbot = TRUE</code> is <span class="math inline">\(-0.98939\)</span> which corresponds to the log of odds ratio between the group of customers that used the chatbot and that interacted with human customer service. The log odds is the logarithm of the odds, which is the ratio of something happening to something not happening. The odds ratio equals <span class="math inline">\(0.37\)</span> is less than <span class="math inline">\(1\)</span>, which means that it is unlikely that a customer using a chatbot will purchase something. In particular, the odds of purchasing something for customers who didn’t use a chatbot are about <span class="math inline">\(27\%\)</span> higher than the odds for customers who used a chatbot.</p>
 
@@ -673,7 +673,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":true,"openEffect":"zoom"});</script>
 
 
 </body></html>

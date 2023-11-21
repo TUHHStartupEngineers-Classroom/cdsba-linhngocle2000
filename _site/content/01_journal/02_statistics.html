@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Linh Ngoc Le">
-
 <title>MyLabJournal - Statistical Concepts</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -76,8 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,22 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -123,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -131,8 +117,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -173,33 +159,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#assignments" id="toc-assignments" class="nav-link active" data-scroll-target="#assignments"><span class="header-section-number">1</span> Assignments</a></li>
-  </ul>
-</nav>
+<li><a href="#expected-value-variance-standard-deviation" id="toc-expected-value-variance-standard-deviation" class="nav-link active" data-scroll-target="#expected-value-variance-standard-deviation"><span class="header-section-number">1</span> Expected value, variance, standard deviation</a></li>
+  <li><a href="#comparing-standard-deviations" id="toc-comparing-standard-deviations" class="nav-link" data-scroll-target="#comparing-standard-deviations"><span class="header-section-number">2</span> Comparing standard deviations</a></li>
+  <li><a href="#computing-covariance-and-correlation" id="toc-computing-covariance-and-correlation" class="nav-link" data-scroll-target="#computing-covariance-and-correlation"><span class="header-section-number">3</span> Computing covariance and correlation</a></li>
+  <li><a href="#interpretation-of-covariance-and-correlation" id="toc-interpretation-of-covariance-and-correlation" class="nav-link" data-scroll-target="#interpretation-of-covariance-and-correlation"><span class="header-section-number">4</span> Interpretation of covariance and correlation</a></li>
+  <li><a href="#conditional-expected-value" id="toc-conditional-expected-value" class="nav-link" data-scroll-target="#conditional-expected-value"><span class="header-section-number">5</span> Conditional expected value</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Statistical Concepts</h1>
 </div>
 
@@ -219,86 +201,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header>
-
-<section id="assignments" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Assignments</h1>
-<ol type="1">
-<li>Expected value, variance, standard deviation:
+</header><section id="expected-value-variance-standard-deviation" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="expected-value-variance-standard-deviation">
+<span class="header-section-number">1</span> Expected value, variance, standard deviation</h2>
 <ol type="1">
 <li>Expected value of
 <ol type="i">
-<li>age: <span class="math inline">\(E[age] = 33.471\)</span></li>
-<li>income: <span class="math inline">\(E[income] = 3510.731\)</span></li>
-</ol></li>
+<li>age: <span class="math inline">\(E[age] = 33.471\)</span>
+</li>
+<li>income: <span class="math inline">\(E[income] = 3510.731\)</span>
+</li>
+</ol>
+</li>
 <li>Variance of
 <ol type="i">
-<li>age: <span class="math inline">\(Var[age] = 340.6078\)</span></li>
-<li>income: <span class="math inline">\(Var[income] = 8625646\)</span></li>
-</ol></li>
+<li>age: <span class="math inline">\(Var[age] = 340.6078\)</span>
+</li>
+<li>income: <span class="math inline">\(Var[income] = 8625646\)</span>
+</li>
+</ol>
+</li>
 <li>Standard deviation of
 <ol type="i">
-<li>age: <span class="math inline">\(\sigma = 18.45556\)</span></li>
-<li>income: <span class="math inline">\(\sigma = 2936.945\)</span></li>
-</ol></li>
-</ol></li>
+<li>age: <span class="math inline">\(\sigma = 18.45556\)</span>
+</li>
+<li>income: <span class="math inline">\(\sigma = 2936.945\)</span>
+</li>
 </ol>
-<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-1_50eb1455920911b8b64765e49b965d21">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Functions used in R for the computation</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>random_vars <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"files/random_vars.rds"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Expected value of "age"</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>E_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"age"</span>]))</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Expected value of "income"</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>E_income <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"income"</span>]))</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Variance of "age"</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>Var_age <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars[<span class="st">"age"</span>])</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Variance of "income"</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>Var_income <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars[<span class="st">"income"</span>])</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Standard deviation of "age"</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>Stdev_age <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"age"</span>]))</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Standard deviation of "income"</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>Stdev_income <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"income"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</li>
+</ol>
+<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-2_31e49f710b183ddd9fc002085a434171">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Expected value of "age"</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>E_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"age"</span>]))</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Expected value of "income"</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>E_income <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"income"</span>]))</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Variance of "age"</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>Var_age <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars[<span class="st">"age"</span>])</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Variance of "income"</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>Var_income <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars[<span class="st">"income"</span>])</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Standard deviation of "age"</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>Stdev_age <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"age"</span>]))</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Standard deviation of "income"</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>Stdev_income <span class="ot">&lt;-</span> <span class="fu">sd</span>(<span class="fu">unlist</span>(random_vars[<span class="st">"income"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="2" type="1">
-<li><p>Comparing standard deviations between age and income may not provide meaningful insights. The two variables are different types of data, thus they have different ranges. Age has a range from 0 to 99, but income has a range from 0 to 10485. Furthermore, both variables have different measure units. Age is measured in years and income is measured in a type of currency. This makes their standard deviations also to have different unit, thus they are not comparable to each other.</p></li>
-<li><p>Covariance, correlation:</p>
+</section><section id="comparing-standard-deviations" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="comparing-standard-deviations">
+<span class="header-section-number">2</span> Comparing standard deviations</h2>
+<p>Comparing standard deviations between age and income may not provide meaningful insights. The two variables are different types of data, thus they have different ranges. Age has a range from 0 to 99, but income has a range from 0 to 10485. Furthermore, both variables have different measure units. Age is measured in years and income is measured in a type of currency. This makes their standard deviations also to have different unit, thus they are not comparable to each other.</p>
+</section><section id="computing-covariance-and-correlation" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="computing-covariance-and-correlation">
+<span class="header-section-number">3</span> Computing covariance and correlation</h2>
 <ol type="1">
-<li>Covariance: <span class="math inline">\(Cov(age,income) = 29700.15\)</span></li>
-<li>Correlation: <span class="math inline">\(Corr(age,income) = 0.5479432\)</span></li>
-</ol></li>
+<li>Covariance: <span class="math inline">\(Cov(age,income) = 29700.15\)</span>
+</li>
+<li>Correlation: <span class="math inline">\(Corr(age,income) = 0.5479432\)</span>
+</li>
 </ol>
 <p>Both the covariance and correlation indicate a positive linear relationship between age and income. In other words, on average, when age increases, income increases proportionally.</p>
-<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-2_c823659b57e4b05b9e2385f7973defc3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Functions used in R for the computation</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># Covariance</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>Covariance <span class="ot">&lt;-</span> <span class="fu">cov</span>(random_vars[<span class="st">"age"</span>], random_vars[<span class="st">"income"</span>])</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Correlation</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>Correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(random_vars[<span class="st">"age"</span>], random_vars[<span class="st">"income"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-3_b7e6ce5aabec3e3b6f4d53ebb55193b5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Covariance</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>Covariance <span class="ot">&lt;-</span> <span class="fu">cov</span>(random_vars[<span class="st">"age"</span>], random_vars[<span class="st">"income"</span>])</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Correlation</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>Correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(random_vars[<span class="st">"age"</span>], random_vars[<span class="st">"income"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="4" type="1">
-<li><p>Correlation is easier to interpret than covariance. Since correlation is a standardized measure ranges from -1 to 1, one can find out the strength of the relationship between two variables in addition to its direction. The closer the absolute value of correlation is to 1, the stronger the relationship. In contrast, covariance is not a standardized measure, since its values don’t have a specific range. Covariance only provides information to the direction of the relationship.</p></li>
-<li><p>Conditional expected value</p>
+</section><section id="interpretation-of-covariance-and-correlation" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="interpretation-of-covariance-and-correlation">
+<span class="header-section-number">4</span> Interpretation of covariance and correlation</h2>
+<p>Correlation is easier to interpret than covariance. Since correlation is a standardized measure ranges from -1 to 1, one can find out the strength of the relationship between two variables in addition to its direction. The closer the absolute value of correlation is to 1, the stronger the relationship. In contrast, covariance is not a standardized measure, since its values don’t have a specific range. Covariance only provides information to the direction of the relationship.</p>
+</section><section id="conditional-expected-value" class="level2" data-number="5"><h2 data-number="5" class="anchored" data-anchor-id="conditional-expected-value">
+<span class="header-section-number">5</span> Conditional expected value</h2>
 <ol type="1">
 <li><span class="math inline">\(E[income|age&lt;=18] = 389.6074\)</span></li>
 <li><span class="math inline">\(E[income|age \in [18,65)] = 4685.734\)</span></li>
 <li><span class="math inline">\(E[income|age&gt;=65] = 1777.237\)</span></li>
-</ol></li>
 </ol>
-<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-3_955c0df309d66a70f6b31bfbc2129403">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Functions used in R for the computation</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Expected value of income with age under or equal 18</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>E_1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">18</span>,<span class="st">"income"</span>]))</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Expected value of income with age above or equal 18 AND under 65</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>E_2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> random_vars<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">65</span>,<span class="st">"income"</span>]))</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Expected value of income with age above or equal 65</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>E_3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">65</span>,<span class="st">"income"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-4_e1d8afb3566da5aaf22f6caf321b3fdc">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Expected value of income with age under or equal 18</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>E_1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">18</span>,<span class="st">"income"</span>]))</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Expected value of income with age above or equal 18 AND under 65</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>E_2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> random_vars<span class="sc">$</span>age <span class="sc">&lt;</span> <span class="dv">65</span>,<span class="st">"income"</span>]))</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># Expected value of income with age above or equal 65</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>E_3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(random_vars[random_vars<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">65</span>,<span class="st">"income"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

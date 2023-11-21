@@ -2,16 +2,20 @@
 title: "Causality"
 ---
 
-# Assignment
+# Spurious correlations
+
 ```{r include=FALSE}
 library(tidyverse)
 ```
 
 ```{r}
+# Importing data values
 mozzarella <- c(9.3, 9.7, 9.7, 9.7, 9.9, 10.2, 10.5, 11, 10.6, 10.6)
 doctorates <- c(480, 501, 540, 552, 547, 622, 655, 701, 712, 708)
 year <- c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009)
 cor_data <- data.frame(year, mozzarella, doctorates)
+
+# Plot data
 ylim.prim <- c(9, 12)
 ylim.sec <- c(400, 1000)
 b <- diff(ylim.prim)/diff(ylim.sec)
@@ -21,6 +25,7 @@ basic + labs(color="Legend")
 ```
 Correlation: 95.86% (r=0.958648)
 ```{r}
+# Calculate correlation of mozzarella consumption and number of awarded doctorates
 cor(mozzarella, doctorates)
 ```
 

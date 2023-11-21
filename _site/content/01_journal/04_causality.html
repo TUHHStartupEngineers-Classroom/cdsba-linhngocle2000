@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Linh Ngoc Le">
-
 <title>MyLabJournal - Causality</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -79,8 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -99,20 +94,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -124,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -132,8 +120,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -174,33 +162,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#assignment" id="toc-assignment" class="nav-link active" data-scroll-target="#assignment"><span class="header-section-number">1</span> Assignment</a></li>
-  </ul>
-</nav>
+<li><a href="#spurious-correlations" id="toc-spurious-correlations" class="nav-link active" data-scroll-target="#spurious-correlations"><span class="header-section-number">1</span> Spurious correlations</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Causality</h1>
 </div>
 
@@ -220,42 +200,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header>
-
-<section id="assignment" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Assignment</h1>
-<div class="cell" data-hash="04_causality_cache/html/unnamed-chunk-2_aed5406753ff909b00ca18228172d0e8">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>mozzarella <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">9.3</span>, <span class="fl">9.7</span>, <span class="fl">9.7</span>, <span class="fl">9.7</span>, <span class="fl">9.9</span>, <span class="fl">10.2</span>, <span class="fl">10.5</span>, <span class="dv">11</span>, <span class="fl">10.6</span>, <span class="fl">10.6</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>doctorates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">480</span>, <span class="dv">501</span>, <span class="dv">540</span>, <span class="dv">552</span>, <span class="dv">547</span>, <span class="dv">622</span>, <span class="dv">655</span>, <span class="dv">701</span>, <span class="dv">712</span>, <span class="dv">708</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2003</span>, <span class="dv">2004</span>, <span class="dv">2005</span>, <span class="dv">2006</span>, <span class="dv">2007</span>, <span class="dv">2008</span>, <span class="dv">2009</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>cor_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(year, mozzarella, doctorates)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>ylim.prim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">12</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>ylim.sec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">400</span>, <span class="dv">1000</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a>b <span class="ot">&lt;-</span> <span class="fu">diff</span>(ylim.prim)<span class="sc">/</span><span class="fu">diff</span>(ylim.sec)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>a <span class="ot">&lt;-</span> (ylim.prim[<span class="dv">1</span>] <span class="sc">-</span> b<span class="sc">*</span>ylim.sec[<span class="dv">1</span>])</span>
-<span id="cb1-9"><a href="#cb1-9"></a>basic <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cor_data, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>mozzarella, <span class="at">color =</span> <span class="st">"Mozzarella consumption"</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> a <span class="sc">+</span> doctorates<span class="sc">*</span>b, <span class="at">color =</span> <span class="st">"Test"</span>), <span class="at">color =</span> <span class="st">"cyan3"</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> a <span class="sc">+</span> doctorates<span class="sc">*</span>b), <span class="at">color =</span> <span class="st">"cyan3"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"Mozzarella cheese consumption"</span>, <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> (. <span class="sc">-</span> a)<span class="sc">/</span>b, <span class="at">name =</span> <span class="st">"Engineering doctorates"</span>)) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="st">"Year"</span>, <span class="at">breaks =</span> cor_data<span class="sc">$</span>year) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Per capita consumption of mozzarella cheese</span><span class="sc">\n</span><span class="st"> correlates with</span><span class="sc">\n</span><span class="st">Civil engineering doctorates awarded"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">face=</span><span class="st">"bold"</span>))</span>
-<span id="cb1-10"><a href="#cb1-10"></a>basic <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">color=</span><span class="st">"Legend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</header><section id="spurious-correlations" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Spurious correlations</h1>
+<div class="cell" data-hash="04_causality_cache/html/unnamed-chunk-2_6ce2f00e113ef715045b93cb01d5cf57">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Importing data values</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>mozzarella <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">9.3</span>, <span class="fl">9.7</span>, <span class="fl">9.7</span>, <span class="fl">9.7</span>, <span class="fl">9.9</span>, <span class="fl">10.2</span>, <span class="fl">10.5</span>, <span class="dv">11</span>, <span class="fl">10.6</span>, <span class="fl">10.6</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>doctorates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">480</span>, <span class="dv">501</span>, <span class="dv">540</span>, <span class="dv">552</span>, <span class="dv">547</span>, <span class="dv">622</span>, <span class="dv">655</span>, <span class="dv">701</span>, <span class="dv">712</span>, <span class="dv">708</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2001</span>, <span class="dv">2002</span>, <span class="dv">2003</span>, <span class="dv">2004</span>, <span class="dv">2005</span>, <span class="dv">2006</span>, <span class="dv">2007</span>, <span class="dv">2008</span>, <span class="dv">2009</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>cor_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(year, mozzarella, doctorates)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Plot data</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>ylim.prim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">12</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>ylim.sec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">400</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>b <span class="ot">&lt;-</span> <span class="fu">diff</span>(ylim.prim)<span class="sc">/</span><span class="fu">diff</span>(ylim.sec)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>a <span class="ot">&lt;-</span> (ylim.prim[<span class="dv">1</span>] <span class="sc">-</span> b<span class="sc">*</span>ylim.sec[<span class="dv">1</span>])</span>
+<span id="cb1-12"><a href="#cb1-12"></a>basic <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cor_data, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>mozzarella, <span class="at">color =</span> <span class="st">"Mozzarella consumption"</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> a <span class="sc">+</span> doctorates<span class="sc">*</span>b, <span class="at">color =</span> <span class="st">"Test"</span>), <span class="at">color =</span> <span class="st">"cyan3"</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> a <span class="sc">+</span> doctorates<span class="sc">*</span>b), <span class="at">color =</span> <span class="st">"cyan3"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="st">"Mozzarella cheese consumption"</span>, <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> (. <span class="sc">-</span> a)<span class="sc">/</span>b, <span class="at">name =</span> <span class="st">"Engineering doctorates"</span>)) <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="st">"Year"</span>, <span class="at">breaks =</span> cor_data<span class="sc">$</span>year) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Per capita consumption of mozzarella cheese</span><span class="sc">\n</span><span class="st"> correlates with</span><span class="sc">\n</span><span class="st">Civil engineering doctorates awarded"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>, <span class="at">face=</span><span class="st">"bold"</span>))</span>
+<span id="cb1-13"><a href="#cb1-13"></a>basic <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">color=</span><span class="st">"Legend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="04_causality_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_causality_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="04_causality_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_causality_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Correlation: 95.86% (r=0.958648)</p>
-<div class="cell" data-hash="04_causality_cache/html/unnamed-chunk-3_80f9d744dab3d93d4a9010b98ffba668">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">cor</span>(mozzarella, doctorates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="04_causality_cache/html/unnamed-chunk-3_df7bd0ead5c0682fcb41f54dce10e0b9">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Calculate correlation of mozzarella consumption and number of awarded doctorates</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">cor</span>(mozzarella, doctorates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 0.9586478</code></pre>
 </div>
 </div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -604,8 +582,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":true,"closeEffect":"zoom","openEffect":"zoom"});</script>
-
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":true});</script>
 
 
 </body></html>

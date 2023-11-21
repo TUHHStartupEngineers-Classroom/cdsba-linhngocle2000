@@ -176,7 +176,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-<li><a href="#assignments" id="toc-assignments" class="nav-link active" data-scroll-target="#assignments"><span class="header-section-number">1</span> Assignments</a></li>
+<li><a href="#dag-of-the-parking-spots-example" id="toc-dag-of-the-parking-spots-example" class="nav-link active" data-scroll-target="#dag-of-the-parking-spots-example"><span class="header-section-number">1</span> DAG of the parking spots example</a></li>
+  <li><a href="#customer-satisfaction" id="toc-customer-satisfaction" class="nav-link" data-scroll-target="#customer-satisfaction"><span class="header-section-number">2</span> Customer satisfaction</a></li>
+  <li><a href="#comparison-of-coefficients" id="toc-comparison-of-coefficients" class="nav-link" data-scroll-target="#comparison-of-coefficients"><span class="header-section-number">3</span> Comparison of coefficients</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot"><span class="header-section-number">4</span> Plot</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -200,11 +203,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><section id="assignments" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Assignments</h1>
-<ol type="1">
-<li>DAG of the parking spots example</li>
-</ol>
+</header><section id="dag-of-the-parking-spots-example" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="dag-of-the-parking-spots-example">
+<span class="header-section-number">1</span> DAG of the parking spots example</h2>
 <div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-2_b24470124d11eb16cc340340517e239b">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># parking spots </span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>parking_spots <span class="ot">&lt;-</span> <span class="fu">dagify</span>(</span>
@@ -229,13 +229,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li>
-<p>Customer satisfaction</p>
+</section><section id="customer-satisfaction" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="customer-satisfaction">
+<span class="header-section-number">2</span> Customer satisfaction</h2>
 <ol type="1">
 <li>Regress <code>satisfaction</code> on <code>follow_ups</code>
-</li>
-</ol>
 </li>
 </ol>
 <div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-4_d4e434b4e4a7b941dcd42047c6805e3e">
@@ -292,9 +289,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #&gt; F-statistic: 87.21 on 3 and 11 DF,  p-value: 5.956e-08</code></pre>
 </div>
 </div>
-<ol start="3" type="1">
-<li>The coefficient in the first case (Regress <code>satisfaction</code> on <code>follow_ups</code>) is negative, meaning an increase in follow-up calls is related to a decrease in satisfaction. However, when we account for <code>subscription</code> in the linear regression, the coefficient indicates a positive linear relationship between follow-up calls and satisfaction. This is due to the fact that the number of follow-up calls depends on the subscription, which also affects the satisfaction degree. Thus, <code>subscription</code> is a cofounder and we would result in an incorrect result if we do not account for <code>subscription</code> when performing regression. The DAG for the example looks like this</li>
-</ol>
+</section><section id="comparison-of-coefficients" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="comparison-of-coefficients">
+<span class="header-section-number">3</span> Comparison of coefficients</h2>
+<p>The coefficient in the first case (Regress <code>satisfaction</code> on <code>follow_ups</code>) is negative, meaning an increase in follow-up calls is related to a decrease in satisfaction. However, when we account for <code>subscription</code> in the linear regression, the coefficient indicates a positive linear relationship between follow-up calls and satisfaction. This is due to the fact that the number of follow-up calls depends on the subscription, which also affects the satisfaction degree. Thus, <code>subscription</code> is a cofounder and we would result in an incorrect result if we do not account for <code>subscription</code> when performing regression. The DAG for the example looks like this</p>
 <div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-6_e3dfda7ca537c05c4d7e664368df516d">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -304,13 +301,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Looking at the DAG above, we see that there is an indirect effect induced by <code>subscription</code> on the direct causal effect of <code>follow_ups</code> on <code>satisfaction</code>. The indirect effect is a spurious correlation which is irrelevant for our research, but can falsify our results if we do not conditioned on it. By accounting for <code>subscription</code> when regressing <code>satisfaction</code> on <code>follow_ups</code>, we condition on <code>subscription</code> and keep it at a fixed value. Thus, the values of <code>satisfaction</code> are purely dependent on the values of <code>follow_ups</code>, and we are able to retrieve the causal effect from <code>follow_ups</code> to <code>satisfaction</code>.</p>
-<ol start="4" type="1">
-<li>Plot</li>
-</ol>
-<div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-7_4986a924d00f18a3266c11c95d985d66">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(customer_sat, <span class="fu">aes</span>(<span class="at">x =</span> follow_ups, <span class="at">y =</span> satisfaction,)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">color =</span> <span class="st">"coral2"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="plot" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="plot">
+<span class="header-section-number">4</span> Plot</h2>
+<div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-7_91ffe6b2fbb971985be246b1472c9e0d">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Plot of first regression</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">ggplot</span>(customer_sat, <span class="fu">aes</span>(<span class="at">x =</span> follow_ups, <span class="at">y =</span> satisfaction,)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">color =</span> <span class="st">"coral2"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="05_dag_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="05_dag_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
@@ -318,17 +315,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-8_cb65eeb24d9edcc9ff7f2804705f731e">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(customer_sat, <span class="fu">aes</span>(<span class="at">x =</span> follow_ups, <span class="at">y =</span> satisfaction,</span>
-<span id="cb7-2"><a href="#cb7-2"></a>                            <span class="at">color =</span> subscription, </span>
-<span id="cb7-3"><a href="#cb7-3"></a>                            <span class="at">alpha =</span> subscription)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Premium"</span><span class="ot">=</span><span class="st">"darkolivegreen3"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7"></a>                                <span class="st">"Premium+"</span><span class="ot">=</span><span class="st">"cornflowerblue"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8"></a>                                <span class="st">"Elite"</span><span class="ot">=</span><span class="st">"coral2"</span>)) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">scale_alpha_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-8_40c6178086af5e57a83d4a8e1facc598">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Plot of second regression</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">ggplot</span>(customer_sat, <span class="fu">aes</span>(<span class="at">x =</span> follow_ups, <span class="at">y =</span> satisfaction,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>                            <span class="at">color =</span> subscription, </span>
+<span id="cb7-4"><a href="#cb7-4"></a>                            <span class="at">alpha =</span> subscription)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Premium"</span><span class="ot">=</span><span class="st">"darkolivegreen3"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8"></a>                                <span class="st">"Premium+"</span><span class="ot">=</span><span class="st">"cornflowerblue"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9"></a>                                <span class="st">"Elite"</span><span class="ot">=</span><span class="st">"coral2"</span>)) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">scale_alpha_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="05_dag_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="05_dag_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
@@ -687,7 +685,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"closeEffect":"zoom","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":true,"closeEffect":"zoom"});</script>
 
 
 </body></html>
