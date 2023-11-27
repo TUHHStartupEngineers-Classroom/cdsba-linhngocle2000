@@ -2,6 +2,53 @@
 title: "Difference-in-Differences"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+```{r include=FALSE}
+hospdd <- readRDS("files/hospdd.rds")
+library(dplyr)
+```
+
+## Mean satisfaction for treated and control hospitals
+
+```{r}
+# Treated hospitals before the treatment
+mean(dplyr::pull(dplyr::filter(hospdd, hospital >= 1, hospital <= 18, procedure==0), satis))
+# Treated hospitals after the treatment
+mean(dplyr::pull(dplyr::filter(hospdd, hospital >= 1, hospital <= 18, procedure==1), satis))
+# Control hospitals (without treatment)
+mean(dplyr::pull(dplyr::filter(hospdd, hospital > 18, procedure==0), satis))
+```
+
+1. Mean satisfaction for treated hospitals before the treatment: 3.525383
+2. Mean satisfaction for treated hospitals after the treatment: 4.363351
+3. Mean satisfaction for control hospitals (without treatment): 3.387499
+
+## Linear regression
+
+```{r}
+# Treated hospitals before introduction
+df_A1_lm <- (dplyr::filter(hospdd, hospital >= 1, hospital <= 18, procedure == 0))
+# Treated hospitals after introduction
+df_A2_lm <- (dplyr::filter(hospdd, hospital >= 1, hospital <= 18, procedure == 1))
+# Control hospitals
+df_B_lm <- (dplyr::filter(hospdd, hospital > 18))
+```
+
+1. Linear regression on treated hospitals before introduction
+
+```{r}
+summary(lm(satis ~ as.factor(hospital) + as.factor(month), data = df_A1_lm))
+```
+
+2. Linear regression on treated hospitals after introduction
+
+```{r}
+summary(lm(satis ~ as.factor(hospital) + as.factor(month), data = df_A2_lm))
+```
+
+3. Linear regression on control hospitals
+
+```{r}
+summary(lm(satis ~ as.factor(hospital) + as.factor(month), data = df_B_lm))
+```
+
+`as.factor()` converts a vector object to a factor. We specify a regressor using `as.factor()` when the regressor is a categorical variable. We want R to treat the variable as a categorical one instead as a numeric one. In our case, the regressors "Hospital ID" and "Month" are categorical variables, thus we need to use `as.factor()`.
