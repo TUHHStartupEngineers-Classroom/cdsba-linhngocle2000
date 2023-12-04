@@ -59,6 +59,7 @@ E_avgpurch_card_1 - E_avgpurch_card_0
 ```
 
 A naive estimate obtained by regressing `avg_purch` on `card`.
+
 ```{r}
 model_naive <- lm(avg_purch ~ card, data = membership)
 summary(model_naive)

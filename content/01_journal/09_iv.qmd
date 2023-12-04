@@ -2,6 +2,100 @@
 title: "Instrumental Variables"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+```{r include=FALSE}
+rand_enc <- readRDS("files/rand_enc.rds")
+library(tidyverse)
+library(dagitty)
+library(ggdag)
+library(ggplot2)
+library(dplyr)
+library(estimatr)
+```
+
+## DAG
+
+```{r}
+# Randomized encouragement trial 
+rand_enc_dag <- dagify(
+  Y ~ X,
+  Z ~ Y,
+  coords = list(x = c(X = 1, Y = 3, Z = 5),
+                y = c(X = 1, Y = 1, Z = 1)),
+  labels = list(X = "randomly encouraged",
+                Y = "use feature",
+                Z = "time spent on app")
+)
+
+# Plot DAG
+ggdag(rand_enc_dag) +
+  theme_dag() +
+  geom_dag_point(color = "lightblue") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges(edge_color = "black") +
+  geom_dag_label_repel(aes(label = label))
+```
+
+## Naive, biased estimate
+
+A naive biased estimate obtained by regressing `time_spent` on `used_ftr`.
+
+```{r}
+model_naive <- lm(time_spent ~ used_ftr, data = rand_enc)
+summary(model_naive)
+```
+
+## Instrumental variable estimation
+
+```{r}
+# Compute correlations
+cor(rand_enc) %>% round(2)
+rand_enc_filtered <- dplyr::filter(rand_enc, used_ftr==0)
+cor(rand_enc_filtered["rand_enc"], rand_enc_filtered["time_spent"]) %>% round(2)
+```
+From the correlation matrix, we can see that there is a positive correlation between `rand_enc` and `used_ftr`, which is also called first-stage and confirms the relevance of our instrument. The randomized encouragement does affect (positively) decision to test the new feature of users. This is assumption "Instrument relevance". However, since the association between `rand_enc` and `used_ftr` is not so strong, the instrument is not so powerful.
+
+For the partly testable assumption "Excludability", the conditional correlation between `rand_enc` and `time_spent` given `used_ftr` suggests a very weak negative linear relationship between `rand_enc` and `time_spent` when `used_ftr` is held constant. The correlation coefficient is close to zero, indicating that the instrument `rand_enc` influences the outcome of `time_spent` only through the treatment variable `used_ftr`.
+
+In conclusion, instrumental variable estimation is an adequate procedure for the given situation.
+
+## IV estimate using 2SLS
+
+```{r}
+# First stage
+first_stage <- lm(used_ftr ~ rand_enc, data = rand_enc)
+summary(first_stage)
+```
+
+```{r}
+# Predicted 'probabilities' from first stage
+pred_fs <- predict(first_stage)
+
+# Create table with predictions and actual decisions
+pred_vs_actl <- tibble(
+  pred = pred_fs,
+  actl = rand_enc$used_ftr
+)
+
+# Plot predictions vs original
+ggplot(pred_vs_actl, aes(x = pred, y = actl, color = as.factor(actl))) +
+  geom_jitter(alpha = .5) +
+  scale_color_discrete(labels = c("Control Group", "Treatment Group")) +
+    theme(legend.title = element_blank())
+```
+
+```{r}
+# Second stage
+second_stage <- lm(rand_enc$time_spent ~ first_stage$fitted.values)
+summary(second_stage)
+```
+
+```{r}
+# Using our instrument (rand_enc), we try to eliminate the bias induced by the omitted variable. If all assumptions regarding the validity of our instrument are met, the resulting coefficient should be close to what we have defined above.
+model_iv <- iv_robust(time_spent ~ used_ftr | rand_enc, data = rand_enc)
+summary(model_iv)
+```
+The naive estimate of `used_ftr` is $10.82269$ and the IV estimate is $9.738$. Since the naive estimate is $1.08469$ larger than the IV estimate, it is biased and it has an upward bias.
+
+
+
+
