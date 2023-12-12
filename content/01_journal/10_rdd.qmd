@@ -2,6 +2,68 @@
 title: "Regression Discontinuity"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+```{r include=FALSE}
+coupon <- readRDS("files/coupon.rds")
+shipping <- readRDS("files/shipping.rds")
+library(rddensity)
+library(dplyr)
+```
+
+## Sensitivity of result
+
+1. RDD with half the bandwidth
+```{r}
+# Define cut-off
+c0 <- 60
+
+# [3] Dependent variable ----
+# [3.1] Average Treatment Effect ----
+# Plot regression lines for full and specified bandwidth.
+# Specify bandwidth
+bw <- c0 + c(-5, 5)
+# Half the bandwidth
+bw_half <- bw/2
+
+# Subsets below and above threshold in specified bandwidth
+df_bw_half_below <- coupon %>% filter(days_since_last >= bw_half[1] & days_since_last < c0)
+df_bw_half_above <- coupon %>% filter(days_since_last >= c0 & days_since_last <= bw_half[2])
+
+df_bw_half <- bind_rows(df_bw_half_above, df_bw_half_below)
+
+# [4] Estimation ----
+# [4.1] Parametric ----
+# Compute coefficients for specified bandwidth.
+lm_bw_half <- lm(purchase_after ~ days_since_last_centered + coupon, df_bw_half)
+summary(lm_bw_half)
+```
+
+2. RDD with double the bandwidth
+```{r}
+# Double the bandwidth
+bw_double <- bw*2
+
+# Subsets below and above threshold in specified bandwidth
+df_bw_double_below <- coupon %>% filter(days_since_last >= bw_double[1] & days_since_last < c0)
+df_bw_double_above <- coupon %>% filter(days_since_last >= c0 & days_since_last <= bw_double[2])
+
+df_bw_double <- bind_rows(df_bw_double_above, df_bw_double_below)
+
+# [4] Estimation ----
+# [4.1] Parametric ----
+# Compute coefficients for specified bandwidth.
+lm_bw_double <- lm(purchase_after ~ days_since_last_centered + coupon, df_bw_double)
+summary(lm_bw_double)
+```
+
+We observe that changing the bandwidth affects the result of RDD significantly. For both bandwidth values, we obtain `NA` for the coefficient of `couponTRUE`.
+
+## Shipping campaign
+
+The variable `purchase_amount` may not be suitable to be used as a running variable with a cut-off at 30€. The running variable and the cut-off value should be chosen such that only observations that were close to a cut-off value determining their treatment status. However, it could be the case that other observable characteristics, for e.g., customer demographics, purchase history, customer economic status, are different for customers above and below the cut-off. Thus, treated and untreated units might be incomparable, since they are different in characteristics other than the treatment status and RDD is unable to eliminate selection bias for that sub-population.
+
+We use a plot to confirm our assumption.
+```{r}
+rddd <- rddensity(shipping$purchase_amount, c = 30)
+rdd_plot <- rdplotdensity(rddd, shipping$purchase_amount, plotN = 100)
+```
+Since the confidence intervals do not overlap in the plot, we have to suspect some kind of manipulation around the cut-off and could not use RDD to obtain valid results.
